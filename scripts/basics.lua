@@ -1,0 +1,19 @@
+local B = {}
+
+B.SCREEN_WIDTH = 1024
+B.SCREEN_HEIGHT = 768
+
+B.GRID_WIDTH = 28
+B.GRID_HEIGHT = 24
+
+B.TILE_WIDTH = 64
+B.TILE_HEIGHT = 32
+
+-- Calcular offset para centrar la grilla en pantalla con margen
+B.GRID_PIXEL_WIDTH = (B.GRID_WIDTH + B.GRID_HEIGHT) * B.TILE_WIDTH / 2
+B.GRID_PIXEL_HEIGHT = (B.GRID_WIDTH + B.GRID_HEIGHT) * B.TILE_HEIGHT / 2
+
+B.OFFSET_X = B.SCREEN_WIDTH / 3
+B.OFFSET_Y = -100
+
+return B

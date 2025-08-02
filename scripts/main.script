@@ -1,0 +1,68 @@
+local B = require "scripts.basics"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.hover_tile = factory.create("#hover_factory", vmath.vector3(0))
+end
+
+local function iso_to_world(iso_x, iso_y)
+	local world_x = (iso_x - iso_y) * (B.TILE_WIDTH / 2) + B.OFFSET_X
+	local world_y = (iso_x + iso_y) * (B.TILE_HEIGHT / 2) + B.OFFSET_Y
+	return vmath.vector3(world_x, world_y, 0)
+end
+
+local function screen_to_isow(x, y)
+	local iso_x = math.floor((x / B.TILE_WIDTH + y / B.TILE_HEIGHT) / 2)
+	local iso_y = math.floor((y / B.TILE_HEIGHT - (x / B.TILE_WIDTH)) / 2)
+	return iso_x, iso_y
+end
+local function screen_to_iso(screen_x, screen_y)
+	-- 1. Convertir coordenadas de pantalla a mundo
+	local world_x = screen_x - B.SCREEN_WIDTH / 2
+	local world_y = screen_y - B.SCREEN_HEIGHT / 2
+
+	-- 2. Ajustar según el desplazamiento de la grilla
+	world_x = world_x - B.OFFSET_X
+	world_y = world_y - B.OFFSET_Y
+
+	-- 3. Convertir a coordenadas isométricas
+	local iso_x = math.floor((world_x / B.TILE_WIDTH + world_y / B.TILE_HEIGHT) / 2)
+	local iso_y = math.floor((world_y / B.TILE_HEIGHT - world_x / B.TILE_WIDTH) / 2)
+
+	return iso_x, iso_y
+end
+
+function on_input(self, action_id, action)
+	local iso_x, iso_y = screen_to_iso(action.x, action.y)
+	local world_pos = iso_to_world(iso_x, iso_y)
+
+	go.set_position(world_pos, self.hover_tile)
+
+	if action.released then
+		factory.create("#pipe_factory", world_pos)
+	end	
+end
+
+function on_inputT(self, action_id, action)
+	if action_id == hash("touch") and (action.released or action.pressed or action.repeated) then
+		-- ⚠️ CONVERTIR COORDENADAS DE PANTALLA A MUNDO
+		local world_x = action.x - B.SCREEN_WIDTH / 2
+		local world_y = action.y - B.SCREEN_HEIGHT / 2
+
+		-- ✅ Ahora sí convertir a coordenadas isométricas
+		local iso_x, iso_y = screen_to_iso(world_x, world_y)
+
+		-- Volver a calcular la posición del mundo desde las coords isométricas
+		local world_pos = iso_to_world(iso_x, iso_y)
+
+		-- Mover el hover_tile
+		go.set_position(world_pos, self.hover_tile)
+
+		print("Click en celda:", iso_x, iso_y, " → Mundo:", world_pos)
+
+		-- Crear el pipe si estamos dentro de la grilla
+		if iso_x >= 0 and iso_x < B.GRID_WIDTH and iso_y >= 0 and iso_y < B.GRID_HEIGHT then
+			factory.create("#pipe_factory", world_pos)
+		end
+	end
+end

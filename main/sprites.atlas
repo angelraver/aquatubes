@@ -1,0 +1,13 @@
+images {
+  image: "/assets/img/tanque.png"
+}
+images {
+  image: "/assets/img/terrain.png"
+}
+images {
+  image: "/assets/img/tubo1.png"
+}
+images {
+  image: "/assets/img/grid_marquer.png"
+}
+extrude_borders: 2
