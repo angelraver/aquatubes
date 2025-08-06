@@ -1,8 +1,4 @@
 name: "main"
-instances {
-  id: "grid_drawer"
-  prototype: "/main/grid_drawer.go"
-}
 scale_along_z: 0
 embedded_instances {
   id: "game_controller"
@@ -20,6 +16,18 @@ embedded_instances {
   "  id: \"hover_factory\"\n"
   "  type: \"factory\"\n"
   "  data: \"prototype: \\\"/main/hover_tile.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"tank_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/tank.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"city_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/city.go\\\"\\n"
   "\"\n"
   "}\n"
   ""

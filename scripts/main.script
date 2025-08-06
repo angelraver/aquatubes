@@ -1,41 +1,45 @@
 local B = require "scripts.basics"
+local Grid = require "scripts.grid"
+local Levels = require "scripts.levels"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+
+	factory.create("#tank_factory", vmath.vector3(110, 122, 0))
+	factory.create("#city_factory", vmath.vector3(536, 370, 0))
+	
 	self.hover_tile = factory.create("#hover_factory", vmath.vector3(0))
-end
 
-local function iso_to_world(iso_x, iso_y)
-	local world_x = (iso_x - iso_y) * (B.TILE_WIDTH / 2) + B.OFFSET_X
-	local world_y = (iso_x + iso_y) * (B.TILE_HEIGHT / 2) + B.OFFSET_Y
-	return vmath.vector3(world_x, world_y, 0)
-end
-
-local function screen_to_iso(screen_x, screen_y)
-	-- 1. Convertir coordenadas de pantalla a mundo
-	local world_x = screen_x - B.SCREEN_WIDTH / 2
-	local world_y = screen_y - B.SCREEN_HEIGHT / 2
-
-	-- 2. Ajustar según el desplazamiento de la grilla
-	world_x = world_x - B.OFFSET_X
-	world_y = world_y - B.OFFSET_Y
-
-	-- 3. Convertir a coordenadas isométricas
-	local iso_x = math.floor((world_x / B.TILE_WIDTH + world_y / B.TILE_HEIGHT) / 2) + 18 -- 18 A OJO
-	print(iso_x)
-	local iso_y = math.floor((world_y / B.TILE_HEIGHT - world_x / B.TILE_WIDTH) / 2) + 9 -- 9 A OJO
-
-	return iso_x, iso_y
+	self.cells = Grid.create_cell_table()
+	self.cells_marked = {}
 end
 
 function on_input(self, action_id, action)
-	local iso_x, iso_y = screen_to_iso(action.x, action.y)
-	local world_pos = iso_to_world(iso_x, iso_y)
-
+	local iso_x, iso_y = B.screen_to_iso(action.x, action.y)
+	local world_pos = B.iso_to_world(iso_x, iso_y)
 	go.set_position(world_pos, self.hover_tile)
 
 	if action.released then
 		factory.create("#pipe_factory", world_pos)
+		local cell = self.cells[iso_x] and self.cells[iso_x][iso_y]
+		if cell.value == nil then
+			cell.value = "p1"
+		else
+			cell.value = nil
+		end
+	
+--		print(iso_x, iso_y,self.cells[iso_x][iso_y].value)
+--		local grid_level = Levels.level_1()
+	--	local cell_level = grid_level[iso_x][iso_y]
+		--if cell.value == cell_level.value then
+			--print("CORRECT!")
+--		end
+
+		-- imporante no borrar, marcador de celdas para armar los levels
+		-- print("Celda:", iso_x, iso_y, "→ ID:", cell.id, "Estado:", cell.value)
 	end	
 end
 
+function update(self, dt)
+	Grid.drawGrid()
+end

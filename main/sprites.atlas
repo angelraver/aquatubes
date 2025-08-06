@@ -10,4 +10,7 @@ images {
 images {
   image: "/assets/img/grid_marquer.png"
 }
+images {
+  image: "/assets/img/tubo2.png"
+}
 extrude_borders: 2
