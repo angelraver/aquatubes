@@ -36,20 +36,4 @@ function Grid.drawGrid()
 	end
 end
 
-function Grid.create_cell_table() 
-	local cells = {}
-	for x = 0, B.GRID_WIDTH - 1 do
-		cells[x] = {}
-		for y = 0, B.GRID_HEIGHT - 1 do
-			local label = string.char(65 + x) .. tostring(y + 1)
-			cells[x][y] = {
-				id = label,
-				value = nil
-			}
-		end
-	end
-
-	return cells
-end
-
 return Grid

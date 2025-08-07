@@ -9,35 +9,55 @@ function init(self)
 	factory.create("#city_factory", vmath.vector3(536, 370, 0))
 	
 	self.hover_tile = factory.create("#hover_factory", vmath.vector3(0))
-
-	self.cells = Grid.create_cell_table()
 	self.cells_marked = {}
 end
 
 function on_input(self, action_id, action)
 	local iso_x, iso_y = B.screen_to_iso(action.x, action.y)
-	local world_pos = B.iso_to_world(iso_x, iso_y)
-	go.set_position(world_pos, self.hover_tile)
+	if iso_x >= 1 and iso_x < B.GRID_WIDTH + 0.5 and
+	iso_y >= -B.GRID_HEIGHT / 2 and (iso_y + 0.5) < B.GRID_HEIGHT / 2 and
+	iso_x + iso_y < B.GRID_WIDTH + B.GRID_HEIGHT - 1
+	then
+		-- estamos dentro del rombo válido
+		local world_pos = B.iso_to_world(math.floor(iso_x), math.floor(iso_y))
+		iso_y = B.adjust_iso_y(iso_y)
+		go.set_position(world_pos, self.hover_tile)
+		if action.released then
+			local cell_saved = B.get_cell_by_coords(self.cells_marked, iso_x, iso_y)
+			if (cell_saved) then
+				go.delete(cell_saved.id)
+				B.delete_cell_by_coords(self.cells_marked, iso_x, iso_y)
+			else
+				local pipe_id = factory.create("#pipe_factory", world_pos)
+				local cell = {
+					id = pipe_id,
+					pipe_type = "p1",
+					x = iso_x,
+					y = iso_y
+				}
+				table.insert(self.cells_marked, cell)
+			end
 
-	if action.released then
-		factory.create("#pipe_factory", world_pos)
-		local cell = self.cells[iso_x] and self.cells[iso_x][iso_y]
-		if cell.value == nil then
-			cell.value = "p1"
-		else
-			cell.value = nil
+			for _, cell in ipairs(self.cells_marked) do
+				print(cell.id, cell.pipe_type, cell.x, cell.y)
+			end
+			print("................................")
+			
+			local grid_level = Levels.level_1
+			local cell_level = B.get_cell_by_coords(grid_level, iso_x, iso_y)
+			if (cell_level) then
+				if "p1" == cell_level.pipe_type then
+					--print("CORRECT!")
+				end
+			end
 		end
-	
---		print(iso_x, iso_y,self.cells[iso_x][iso_y].value)
---		local grid_level = Levels.level_1()
-	--	local cell_level = grid_level[iso_x][iso_y]
-		--if cell.value == cell_level.value then
-			--print("CORRECT!")
---		end
 
 		-- imporante no borrar, marcador de celdas para armar los levels
-		-- print("Celda:", iso_x, iso_y, "→ ID:", cell.id, "Estado:", cell.value)
-	end	
+		--print("Celda:", iso_x, iso_y)
+	else
+		-- fuera del área válida: ocultar el hover
+		go.set_position(vmath.vector3(10000, 10000, 0), self.hover_tile)
+	end
 end
 
 function update(self, dt)

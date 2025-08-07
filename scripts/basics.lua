@@ -37,4 +37,26 @@ function B.screen_to_iso(screen_x, screen_y)
 	return iso_x, iso_y
 end
 
+function B.get_cell_by_coords(current_table, x, y)
+	for _, cell in ipairs(current_table) do
+		if cell.x == x and cell.y == y then
+			return cell
+		end
+	end
+	return nil  -- si no se encuentra
+end
+
+function B.delete_cell_by_coords(current_table, x, y)
+	for i, cell in ipairs(current_table) do
+		if cell.x == x and cell.y == y then
+			table.remove(current_table, i)
+			break
+		end
+	end
+end
+
+function B.adjust_iso_y(iso_y)
+	return iso_y  + 6
+end
+
 return B

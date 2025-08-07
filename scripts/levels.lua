@@ -1,20 +1,18 @@
 local B = require "scripts.basics"
-local Grid = require "scripts.grid"
 
 local Levels = {}
 
-function Levels.level_1()
-	local cells = Grid.create_cell_table() 
-	cells[0][4].value = "p1"
-	cells[1][4].value = "p1"
-	cells[2][4].value = "p1"
-	cells[3][4].value = "p1"
-	cells[4][4].value = "p1"
-	cells[5][4].value = "p1"
-	cells[6][4].value = "p1"
-	cells[7][4].value = "p1"
-	cells[8][4].value = "p1"
-	return cells
-end
-
+Levels.level_1 = {
+	{ pipe_type = "p1", x = 1, y = 5 },
+	{ pipe_type = "p1", x = 2, y = 5 },
+	{ pipe_type = "p1", x = 3, y = 5 },
+	{ pipe_type = "p1", x = 4, y = 5 },
+	{ pipe_type = "p1", x = 5, y = 5 },
+	{ pipe_type = "p1", x = 6, y = 5 },
+	{ pipe_type = "p1", x = 7, y = 5 },
+	{ pipe_type = "p1", x = 8, y = 5 },
+	{ pipe_type = "p1", x = 9, y = 5 },
+	{ pipe_type = "p1", x = 10, y = 5 },
+}
+	
 return Levels
