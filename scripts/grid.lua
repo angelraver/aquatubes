@@ -10,12 +10,8 @@ function Grid.draw_tile(x, y)
 	local half_w = B.TILE_WIDTH / 2
 	local half_h = B.TILE_HEIGHT / 2
 
-	local world_x = (x - y) * half_w + B.OFFSET_X
-	local world_y = (x + y) * half_h + B.OFFSET_Y
-	
-	B.ORIGIN_X = 128  -- este es el centro del tile 0,0 en X
-	B.ORIGIN_Y = 104  -- este es el centro del tile 0,0 en Y
-	
+	local world_x = (x - y) * half_w + B.ORIGIN_X
+	local world_y = (x + y) * half_h + B.ORIGIN_Y	
 
 	local p1 = vmath.vector3(world_x,world_y + half_h, 0) -- top
 	local p2 = vmath.vector3(world_x + half_w, world_y, 0) -- right

@@ -30,5 +30,11 @@ embedded_instances {
   "  data: \"prototype: \\\"/main/city.go\\\"\\n"
   "\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"done_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/done.go\\\"\\n"
+  "\"\n"
+  "}\n"
   ""
 }
