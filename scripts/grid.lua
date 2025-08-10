@@ -1,4 +1,4 @@
-local B = require "scripts.basics"
+local C = require "scripts.config"
 local Grid = {}
 
 function Grid.draw_line(p1, p2)
@@ -7,11 +7,11 @@ function Grid.draw_line(p1, p2)
 end
 
 function Grid.draw_tile(x, y)
-	local half_w = B.TILE_WIDTH / 2
-	local half_h = B.TILE_HEIGHT / 2
+	local half_w = C.TILE_WIDTH / 2
+	local half_h = C.TILE_HEIGHT / 2
 
-	local world_x = (x - y) * half_w + B.ORIGIN_X
-	local world_y = (x + y) * half_h + B.ORIGIN_Y	
+	local world_x = (x - y) * half_w + C.ORIGIN_X
+	local world_y = (x + y) * half_h + C.ORIGIN_Y	
 
 	local p1 = vmath.vector3(world_x,world_y + half_h, 0) -- top
 	local p2 = vmath.vector3(world_x + half_w, world_y, 0) -- right
@@ -25,8 +25,8 @@ function Grid.draw_tile(x, y)
 end
 
 function Grid.drawGrid()
-	for x = 0, B.GRID_WIDTH - 1 do
-		for y = 0, B.GRID_HEIGHT - 1 do
+	for x = 0, C.GRID_WIDTH - 1 do
+		for y = 0, C.GRID_HEIGHT - 1 do
 			Grid.draw_tile(x, y)
 		end
 	end

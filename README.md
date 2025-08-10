@@ -9,5 +9,3 @@ Check out [the documentation pages](https://defold.com/learn) for examples, tuto
 If you run into trouble, help is available in [our forum](https://forum.defold.com).
 
 Happy Defolding!
-
----

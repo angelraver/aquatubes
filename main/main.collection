@@ -1,4 +1,52 @@
 name: "main"
+instances {
+  id: "soil"
+  prototype: "/main/soil.go"
+  position {
+    x: 299.0
+    y: 244.0
+    z: -0.8
+  }
+  scale3 {
+    y: 1.047662
+  }
+}
+instances {
+  id: "tank_soil"
+  prototype: "/main/tank_soil.go"
+  position {
+    x: 220.0
+    y: 55.0
+    z: -0.7
+  }
+  scale3 {
+    y: 1.047662
+  }
+}
+instances {
+  id: "background"
+  prototype: "/main/background.go"
+  position {
+    x: 299.0
+    y: 372.0
+    z: -0.9
+  }
+  scale3 {
+    y: 1.047662
+  }
+}
+instances {
+  id: "front_forest"
+  prototype: "/main/front_forest.go"
+  position {
+    x: 375.0
+    y: -1.0
+    z: 1.0
+  }
+  scale3 {
+    y: 1.047662
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "game_controller"
@@ -7,9 +55,9 @@ embedded_instances {
   "  component: \"/scripts/main.script\"\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"pipe_factory\"\n"
+  "  id: \"pipe_1_factory\"\n"
   "  type: \"factory\"\n"
-  "  data: \"prototype: \\\"/main/tubo1.go\\\"\\n"
+  "  data: \"prototype: \\\"/main/pipe_1.go\\\"\\n"
   "\"\n"
   "}\n"
   "embedded_components {\n"
@@ -19,21 +67,39 @@ embedded_instances {
   "\"\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"tank_factory\"\n"
-  "  type: \"factory\"\n"
-  "  data: \"prototype: \\\"/main/tank.go\\\"\\n"
-  "\"\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"city_factory\"\n"
-  "  type: \"factory\"\n"
-  "  data: \"prototype: \\\"/main/city.go\\\"\\n"
-  "\"\n"
-  "}\n"
-  "embedded_components {\n"
   "  id: \"done_factory\"\n"
   "  type: \"factory\"\n"
   "  data: \"prototype: \\\"/main/done.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"tubo_0_right_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/tubo_0_right.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_2_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/pipe_2.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_3_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/pipe_3.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_4_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/pipe_4.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_5_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/pipe_5.go\\\"\\n"
   "\"\n"
   "}\n"
   ""

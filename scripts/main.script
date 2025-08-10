@@ -1,66 +1,88 @@
 local B = require "scripts.basics"
+local C = require "scripts.config"
 local Grid = require "scripts.grid"
 local Levels = require "scripts.levels"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	factory.create("#tank_factory", vmath.vector3(76, 154, 1))
-	factory.create("#city_factory", vmath.vector3(504, 404, 0))
-
-	self.hover_tile = factory.create("#hover_factory", vmath.vector3(0))
-	self.cells_marked = {}
+	math.randomseed(os.time())
+	self.grid_level = Levels.level_1
+	self.pipe_handled = nil
 	self.level_complete = false
+	self.board_pipes = B.place_random_pipes(self.grid_level)
+	self.hover_tile = factory.create("#hover_factory", vmath.vector3(0))
+
+	print(B.get_z_for_cell(0))
+	print(B.get_z_for_cell(1))
+	print(B.get_z_for_cell(2))
+	print(B.get_z_for_cell(3))
+	print(B.get_z_for_cell(4))
+	print(B.get_z_for_cell(5))
+	print(B.get_z_for_cell(6))
+	print(B.get_z_for_cell(7))
+	print(B.get_z_for_cell(8))
+	print(B.get_z_for_cell(9))
+	
+	factory.create("#tubo_0_right_factory", vmath.vector3(488, 402, 0))
 end
 
 function on_input(self, action_id, action)
 	-- screen_to_iso ahora devuelve nil, nil si no hay una celda válida
 	local iso_x, iso_y = B.screen_to_iso(action.x, action.y)
-
-	if iso_x ~= nil and iso_y ~= nil and not self.level_complete then
-		-- Estamos sobre una celda válida.
-		local world_pos = B.iso_to_world(iso_x, iso_y)
-		go.set_position(world_pos, self.hover_tile)
-
-		if action.released then
-			local cell_saved = B.get_cell_by_coords(self.cells_marked, iso_x, iso_y)
-			if (cell_saved) then
-				go.delete(cell_saved.id)
-				B.delete_cell_by_coords(self.cells_marked, iso_x, iso_y)
-			else
-				local z = 1 - (iso_x / 10) - 0.1
-				local world_pos_with_z = B.iso_to_world(iso_x, iso_y, z)
-				local pipe_id = factory.create("#pipe_factory", world_pos_with_z)
-				local cell = {
-					id = pipe_id,
-					pipe_type = "p1",
-					x = iso_x,
-					y = iso_y
-				}
-				table.insert(self.cells_marked, cell)
+	
+	if iso_x ~= nil and iso_y ~= nil and not self.level_complete then -- estamos en el area de la grilla
+		local key = iso_x .. "," .. iso_y
+		if not C.BANNED_CELLS_SET[key] then --Estamos sobre una celda válida.
+			local world_pos = B.iso_to_world(iso_x, iso_y)
+			local z = B.get_z_for_cell(iso_x)
+			local world_pos_with_z = B.iso_to_world(iso_x, iso_y, z)
+			if self.pipe_handled ~= nil then
+				world_pos = world_pos_with_z -- seteo el z adecuado ahora que el hover es pipe
 			end
 
-			--for _, cell in ipairs(self.cells_marked) do
-				--print(cell.id, cell.pipe_type, cell.x, cell.y)
-			--end
-			--print("................................")
-			local grid_level = Levels.level_1
-			--local cell_level = B.get_cell_by_coords(grid_level, iso_x, iso_y)
-			--if (cell_level) then
-				--if "p1" == cell_level.pipe_type then
-					--print("CORRECT!")
-				--end
-				--end
-			self.level_complete = B.check_level_complete(grid_level, self.cells_marked)
-			if (self.level_complete) then
-				local victory_id = factory.create("#done_factory", vmath.vector3(300, 300, 0))
-				self.victory_go = victory_id
+			local updated_cell
+			if action.released then
+				local cell_with_pipe = B.get_cell_by_coords(self.board_pipes, iso_x, iso_y)	-- verificando si hay pipe en la celda clickead
+				if self.pipe_handled then	-- hay un pipe seleccionado
+					if cell_with_pipe then	-- click en celda con pipe -> intercambio los pipes:
+						go.delete(self.hover_tile)	-- borro el hover_tile
+						go.delete(cell_with_pipe.id)	-- borro del tablero el pipe presente
+						B.delete_cell_by_coords(self.board_pipes, iso_x, iso_y)	-- borro la celda de la tabla tablero
+						updated_cell = B.place_pipe(self.pipe_handled.pipe_type, iso_x, iso_y)	-- deposito en el tablero el pipe_handle
+						table.insert(self.board_pipes, updated_cell)	-- guardo la celda alterada en la tabla tablero
+						self.pipe_handled = cell_with_pipe	-- reemplazo el pipe_handled
+						self.hover_tile = factory.create("#".. cell_with_pipe.pipe_type .."_factory", vmath.vector3(0))	-- creo un hover_tile con el pipe presente
+					else	--click en celda sin pipe -> deposito el pipe_handled
+						go.delete(self.hover_tile)	-- borro el hover_tile
+						updated_cell = B.place_pipe(self.pipe_handled.pipe_type, iso_x, iso_y)	-- deposito en el tablero el pipe_handle
+						table.insert(self.board_pipes, updated_cell)	-- guardo la celda alterada en la tabla tablero
+						self.pipe_handled = nil	-- vacio el pipe_handled
+						self.hover_tile = factory.create("#hover_factory", vmath.vector3(0)) -- reestablezco el hover tile
+					end
+				else	-- no hay pipe seleccionado
+					if cell_with_pipe then	-- click en celda con pipe -> tomamos el pipe
+						self.pipe_handled = cell_with_pipe -- guardo la celda en el pipe_handled
+						go.delete(self.hover_tile) -- borro el hove actual
+						go.delete(cell_with_pipe.id) -- borro del tablero el pipe presente
+						B.delete_cell_by_coords(self.board_pipes, iso_x, iso_y)	-- borro la celda de la tabla tablero
+						self.hover_tile = factory.create("#".. cell_with_pipe.pipe_type .."_factory", vmath.vector3(0))	-- creo un hover_tile con el pipe presente
+					end
+--------------- click en celda sin pipe no hacemos nada
+				end
+
+				self.level_complete = B.check_level_complete(self.grid_level, self.board_pipes)
+				if (self.level_complete) then
+					local victory_id = factory.create("#done_factory", vmath.vector3(300, 300, 1))
+					self.victory_go = victory_id
+				end
+				-- imporante no borrar, marcador de celdas para armar los levels
+				--print("Celda:", iso_x, iso_y)
 			end
+			go.set_position(world_pos, self.hover_tile) -- reubico el hover al lugar actual
+		else
+			-- Fuera de la cuadrícula o de una celda válida. Ocultamos el hover.
+			go.set_position(vmath.vector3(10000, 10000, 0), self.hover_tile)
 		end
-	-- imporante no borrar, marcador de celdas para armar los levels
-		--print("Celda:", iso_x, iso_y)
-	else
-		-- Fuera de la cuadrícula o de una celda válida. Ocultamos el hover.
-		go.set_position(vmath.vector3(10000, 10000, 0), self.hover_tile)
 	end
 end
 
