@@ -1,5 +1,5 @@
 embedded_components {
-  id: "sprite"
+  id: "big_trees"
   type: "sprite"
   data: "default_animation: \"front_forest\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
@@ -44,20 +44,5 @@ embedded_components {
   position {
     x: -208.0
     y: -35.0
-  }
-}
-embedded_components {
-  id: "sprite1"
-  type: "sprite"
-  data: "default_animation: \"tanque\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "textures {\n"
-  "  sampler: \"texture_sampler\"\n"
-  "  texture: \"/main/sprites.atlas\"\n"
-  "}\n"
-  ""
-  position {
-    x: -338.0
-    y: 136.0
   }
 }

@@ -4,7 +4,7 @@ instances {
   prototype: "/main/level/background.go"
   position {
     x: 320.0
-    y: 441.0
+    y: 451.0
     z: -0.9
   }
 }
@@ -33,6 +33,15 @@ instances {
     x: 220.0
     y: 55.0
     z: -0.7
+  }
+}
+instances {
+  id: "tank"
+  prototype: "/main/level/tank.go"
+  position {
+    x: 82.0
+    y: 120.0
+    z: 1.0
   }
 }
 scale_along_z: 0
@@ -118,6 +127,18 @@ embedded_instances {
   "  id: \"pipe_9_factory\"\n"
   "  type: \"factory\"\n"
   "  data: \"prototype: \\\"/main/level/pipes/pipe_9.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_0_right_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_0_right.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_0_left_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_0_left.go\\\"\\n"
   "\"\n"
   "}\n"
   ""

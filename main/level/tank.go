@@ -8,4 +8,8 @@ embedded_components {
   "  texture: \"/main/sprites.atlas\"\n"
   "}\n"
   ""
+  scale {
+    x: 0.75
+    y: 0.75
+  }
 }

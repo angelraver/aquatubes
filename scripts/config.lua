@@ -44,6 +44,8 @@ C.ORIGIN_X = C.SCREEN_WIDTH / 2 - C.TILE_WIDTH / 2 + C.HORIZONTAL_OFFSET
 C.ORIGIN_Y = (C.SCREEN_HEIGHT / 2) - grid_center_y_offset + C.VERTICAL_OFFSET
 
 C.BANNED_CELLS_SET = {
+	["0,4"] = true,
+	["0,5"] = true,
 	["0,8"] = true,
 	["1,8"] = true,
 	["2,8"] = true,

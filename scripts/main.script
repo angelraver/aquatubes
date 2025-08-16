@@ -12,6 +12,11 @@ function init(self)
 	self.board_pipes = B.place_random_pipes(self.grid_level)
 	self.hover_tile = factory.create("#hover_factory", vmath.vector3(0))
 
+	local world_pos_with_zz = B.iso_to_world(9, 5, 0)
+	self.pipe_0 = factory.create("#pipe_0_right_factory", world_pos_with_zz)
+	world_pos_with_zz = B.iso_to_world(7, 9, 0)
+	self.pipe_0 = factory.create("#pipe_0_left_factory", world_pos_with_zz)
+	
 --	print(B.get_z_for_cell(0))
 	--print(B.get_z_for_cell(1))
 	--print(B.get_z_for_cell(2))
