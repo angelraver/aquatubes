@@ -1,0 +1,34 @@
+local MANAGER = require "scripts.manager"
+
+local function switch_to_scene(new_scene)
+	if new_scene == "level" then
+		MANAGER.current_scene ="level"
+		msg.post("#menu", "unload")
+		msg.post("#level", "load")
+	elseif new_scene == "menu" then
+		MANAGER.current_scene = "menu"
+		msg.post("#level", "unload")
+		msg.post("#menu", "load")
+	end	
+end
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	msg.post("#menu", "load")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "enable")
+	end
+
+	if message_id == hash("change_scene") and message.scene then
+		switch_to_scene(message.scene)
+	end
+
+	if message_id == hash("toggle_sound") then
+		print("toggle_sound")
+		MANAGER.sound_on = not MANAGER.sound_on
+	end
+	
+end

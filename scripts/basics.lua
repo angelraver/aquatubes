@@ -86,8 +86,8 @@ function B.get_random_pipes(level_table)
 		-- Buscamos una celda aleatoria que NO esté ocupada.
 		-- El bucle se repetirá hasta que encuentre una celda válida.
 		repeat
-			random_x = B.get_random_number(0, 9)
-			random_y = B.get_random_number(0, 9)
+			random_x = B.get_random_number(0, 8)
+			random_y = B.get_random_number(0, 8)
 			key = random_x .. "," .. random_y
 		until not occupied_cells[key]
 		-- Una vez encontrada una celda válida, la marcamos como ocupada

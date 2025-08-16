@@ -13,10 +13,10 @@ function Grid.draw_tile(x, y)
 	local world_x = (x - y) * half_w + C.ORIGIN_X
 	local world_y = (x + y) * half_h + C.ORIGIN_Y	
 
-	local p1 = vmath.vector3(world_x,world_y + half_h, 0) -- top
-	local p2 = vmath.vector3(world_x + half_w, world_y, 0) -- right
-	local p3 = vmath.vector3(world_x, world_y - half_h, 0) -- bottom
-	local p4 = vmath.vector3(world_x - half_w, world_y, 0) -- left
+	local p1 = vmath.vector3(world_x,world_y + half_h, 1) -- top
+	local p2 = vmath.vector3(world_x + half_w, world_y, 1) -- right
+	local p3 = vmath.vector3(world_x, world_y - half_h, 1) -- bottom
+	local p4 = vmath.vector3(world_x - half_w, world_y, 1) -- left
 
 	Grid.draw_line(p1, p2)
 	Grid.draw_line(p2, p3)
@@ -24,7 +24,7 @@ function Grid.draw_tile(x, y)
 	Grid.draw_line(p4, p1)
 end
 
-function Grid.drawGrid()
+function Grid.draw_grid()
 	for x = 0, C.GRID_WIDTH - 1 do
 		for y = 0, C.GRID_HEIGHT - 1 do
 			Grid.draw_tile(x, y)

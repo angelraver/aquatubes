@@ -1,0 +1,16 @@
+images {
+  image: "/assets/img/ui/level.png"
+}
+images {
+  image: "/assets/img/ui/sound_off.png"
+}
+images {
+  image: "/assets/img/ui/sound_on.png"
+}
+images {
+  image: "/assets/img/ui/start.png"
+}
+images {
+  image: "/assets/img/ui/x.png"
+}
+extrude_borders: 2

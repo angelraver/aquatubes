@@ -1,0 +1,124 @@
+name: "level"
+instances {
+  id: "background"
+  prototype: "/main/level/background.go"
+  position {
+    x: 320.0
+    y: 441.0
+    z: -0.9
+  }
+}
+instances {
+  id: "front_forest"
+  prototype: "/main/level/front_forest.go"
+  position {
+    x: 376.0
+    y: -1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "soil"
+  prototype: "/main/level/soil.go"
+  position {
+    x: 320.0
+    y: 316.0
+    z: -0.8
+  }
+}
+instances {
+  id: "tank_soil"
+  prototype: "/main/level/tank_soil.go"
+  position {
+    x: 220.0
+    y: 55.0
+    z: -0.7
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "game_controller"
+  data: "components {\n"
+  "  id: \"main\"\n"
+  "  component: \"/scripts/main.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"done_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/done.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"hover_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/hover_tile.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_1_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_1.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_2_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_2.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_3_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_3.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_4_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_4.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_10_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_10.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_8_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_8.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_6_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_6.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_5_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_5.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_7_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_7.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_11_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_11.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"pipe_9_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/level/pipes/pipe_9.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}

@@ -1,0 +1,45 @@
+script: "/scripts/main.gui_script"
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+textures {
+  name: "ui"
+  texture: "/main/ui.atlas"
+}
+nodes {
+  position {
+    x: 293.0
+    y: 429.0
+  }
+  type: TYPE_BOX
+  texture: "ui/start"
+  id: "play_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 548.0
+    y: 41.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "sound_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  type: TYPE_PIE
+  texture: "ui/sound_on"
+  id: "sound_pie"
+  parent: "sound_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

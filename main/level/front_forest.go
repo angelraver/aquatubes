@@ -1,0 +1,63 @@
+embedded_components {
+  id: "sprite"
+  type: "sprite"
+  data: "default_animation: \"front_forest\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/sprites.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    y: -20.0
+  }
+}
+embedded_components {
+  id: "trees"
+  type: "sprite"
+  data: "default_animation: \"tank_soil_trees\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/sprites.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: -102.0
+    y: 22.0
+  }
+}
+embedded_components {
+  id: "trees1"
+  type: "sprite"
+  data: "default_animation: \"tank_soil_trees\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "size {\n"
+  "  x: 512.0\n"
+  "  y: 210.0\n"
+  "}\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/sprites.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: -208.0
+    y: -35.0
+  }
+}
+embedded_components {
+  id: "sprite1"
+  type: "sprite"
+  data: "default_animation: \"tanque\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "textures {\n"
+  "  sampler: \"texture_sampler\"\n"
+  "  texture: \"/main/sprites.atlas\"\n"
+  "}\n"
+  ""
+  position {
+    x: -338.0
+    y: 136.0
+  }
+}

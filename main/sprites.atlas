@@ -2,25 +2,13 @@ images {
   image: "/assets/img/tanque.png"
 }
 images {
-  image: "/assets/img/tubo1.png"
-}
-images {
   image: "/assets/img/grid_marquer.png"
-}
-images {
-  image: "/assets/img/tubo2.png"
 }
 images {
   image: "/assets/img/done.png"
 }
 images {
   image: "/assets/img/background.png"
-}
-images {
-  image: "/assets/img/tubo_0_left.png"
-}
-images {
-  image: "/assets/img/tubo_0_right.png"
 }
 images {
   image: "/assets/img/front_forest.png"
@@ -35,18 +23,36 @@ images {
   image: "/assets/img/tank_soil_trees.png"
 }
 images {
-  image: "/assets/img/pipe_1.png"
+  image: "/assets/img/pipes/pipe_1.png"
 }
 images {
-  image: "/assets/img/pipe_2.png"
+  image: "/assets/img/pipes/pipe_2.png"
 }
 images {
-  image: "/assets/img/pipe_3.png"
+  image: "/assets/img/pipes/pipe_3.png"
 }
 images {
-  image: "/assets/img/pipe_4.png"
+  image: "/assets/img/pipes/pipe_4.png"
 }
 images {
-  image: "/assets/img/pipe_5.png"
+  image: "/assets/img/pipes/pipe_5.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_6.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_7.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_8.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_9.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_10.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_11.png"
 }
 extrude_borders: 2

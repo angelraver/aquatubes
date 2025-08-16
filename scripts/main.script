@@ -12,18 +12,16 @@ function init(self)
 	self.board_pipes = B.place_random_pipes(self.grid_level)
 	self.hover_tile = factory.create("#hover_factory", vmath.vector3(0))
 
-	print(B.get_z_for_cell(0))
-	print(B.get_z_for_cell(1))
-	print(B.get_z_for_cell(2))
-	print(B.get_z_for_cell(3))
-	print(B.get_z_for_cell(4))
-	print(B.get_z_for_cell(5))
-	print(B.get_z_for_cell(6))
-	print(B.get_z_for_cell(7))
-	print(B.get_z_for_cell(8))
-	print(B.get_z_for_cell(9))
-	
-	factory.create("#tubo_0_right_factory", vmath.vector3(488, 402, 0))
+--	print(B.get_z_for_cell(0))
+	--print(B.get_z_for_cell(1))
+	--print(B.get_z_for_cell(2))
+	--print(B.get_z_for_cell(3))
+--	print(B.get_z_for_cell(4))
+	--print(B.get_z_for_cell(5))
+	--print(B.get_z_for_cell(6))
+	--print(B.get_z_for_cell(7))
+	--print(B.get_z_for_cell(8))
+	--print(B.get_z_for_cell(9))
 end
 
 function on_input(self, action_id, action)
@@ -42,6 +40,9 @@ function on_input(self, action_id, action)
 
 			local updated_cell
 			if action.released then
+				-- imporante no borrar, marcador de celdas para armar los levels
+				print("Celda:", iso_x, iso_y)
+				----------------------------------------------------------------
 				local cell_with_pipe = B.get_cell_by_coords(self.board_pipes, iso_x, iso_y)	-- verificando si hay pipe en la celda clickead
 				if self.pipe_handled then	-- hay un pipe seleccionado
 					if cell_with_pipe then	-- click en celda con pipe -> intercambio los pipes:
@@ -75,8 +76,6 @@ function on_input(self, action_id, action)
 					local victory_id = factory.create("#done_factory", vmath.vector3(300, 300, 1))
 					self.victory_go = victory_id
 				end
-				-- imporante no borrar, marcador de celdas para armar los levels
-				--print("Celda:", iso_x, iso_y)
 			end
 			go.set_position(world_pos, self.hover_tile) -- reubico el hover al lugar actual
 		else
@@ -87,5 +86,5 @@ function on_input(self, action_id, action)
 end
 
 function update(self, dt)
-	Grid.drawGrid()
+	Grid.draw_grid()
 end
