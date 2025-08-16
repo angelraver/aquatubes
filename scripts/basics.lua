@@ -116,8 +116,9 @@ function B.place_random_pipes(level_table)
 end
 
 function B.place_pipe(pipe_type, iso_x, iso_y)
-	local z = B.get_z_for_cell(iso_x)
+	local z = B.get_z_for_cell(iso_x, iso_y)
 	local world_pos_with_z = B.iso_to_world(iso_x, iso_y, z)
+	--print(iso_x, iso_y, z)
 	local pipe_id = factory.create("#" .. pipe_type .. "_factory", world_pos_with_z)
 	local cell_to_save = {
 		id = pipe_id,
@@ -135,12 +136,11 @@ function B.get_random_number(min_num, max_num)
 	return math.random(min_num, max_num)
 end
 
-function B.get_z_for_cell(iso_x)
-	if iso_x < 9 then
-		return 1 - (iso_x / 10) - 0.1
-	else
-		return 1 - (iso_x / 10)
-	end
+function B.get_z_for_cell(iso_x, iso_y)
+	local x_z = 0.5 - (iso_x / 100) - 0.01
+	local y_z = 0.5 - (iso_y / 100) - 0.01
+	local z = x_z + y_z
+	return z
 end
 
 return B

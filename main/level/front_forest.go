@@ -23,8 +23,7 @@ embedded_components {
   "}\n"
   ""
   position {
-    x: -102.0
-    y: 22.0
+    x: -60.0
   }
 }
 embedded_components {
@@ -43,6 +42,6 @@ embedded_components {
   ""
   position {
     x: -208.0
-    y: -35.0
+    y: -55.0
   }
 }

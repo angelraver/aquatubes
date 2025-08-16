@@ -1,47 +1,11 @@
 name: "level"
 instances {
-  id: "background"
-  prototype: "/main/level/background.go"
-  position {
-    x: 320.0
-    y: 451.0
-    z: -0.88
-  }
-}
-instances {
-  id: "front_forest"
-  prototype: "/main/level/front_forest.go"
-  position {
-    x: 376.0
-    y: -1.0
-    z: 0.991
-  }
-}
-instances {
-  id: "soil"
-  prototype: "/main/level/soil.go"
-  position {
-    x: 320.0
-    y: 316.0
-    z: -0.87
-  }
-}
-instances {
-  id: "tank_soil"
-  prototype: "/main/level/tank_soil.go"
-  position {
-    x: 220.0
-    y: 55.0
-    z: -0.87
-  }
-}
-instances {
   id: "tank"
   prototype: "/main/level/tank.go"
   position {
     x: 82.0
     y: 120.0
-    z: 0.989
+    z: 1.0
   }
 }
 scale_along_z: 0
