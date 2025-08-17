@@ -36,6 +36,34 @@ function B.screen_to_iso(screen_x, screen_y)
 	return nil, nil
 end
 
+function B.screen_to_iso_edit(screen_x, screen_y)
+	local half_w = C.TILE_WIDTH / 2
+	local half_h = C.TILE_HEIGHT / 2
+
+	local dx = screen_x - C.ORIGIN_X
+	local dy = screen_y - C.ORIGIN_Y
+
+	local iso_x_float = (dx / half_w + dy / half_h) / 2
+	local iso_y_float = (dy / half_h - dx / half_w) / 2
+
+	local candidate_x = math.floor(iso_x_float + 0.5)
+	local candidate_y = math.floor(iso_y_float + 0.5)
+
+	local tile_center_world = B.iso_to_world(candidate_x, candidate_y)
+
+	local diff_x = math.abs(screen_x - tile_center_world.x)
+	local diff_y = math.abs(screen_y - tile_center_world.y)
+
+	if (diff_x / half_w + diff_y / half_h) <= 1.0 then
+		if candidate_x >= 0 and candidate_x < C.GRID_WIDTH_EDIT and
+		candidate_y >= 0 and candidate_y < C.GRID_HEIGHT_EDIT then
+			return candidate_x, candidate_y
+		end
+	end
+
+	return nil, nil
+end
+
 function B.get_cell_by_coords(current_table, x, y)
 	for _, cell in ipairs(current_table) do
 		if cell.x == x and cell.y == y then
@@ -94,10 +122,12 @@ function B.get_random_pipes(level_table)
 		-- para evitar que futuras tuberías en esta misma llamada usen esta celda (evita repetidos).
 		occupied_cells[key] = true
 		-- Creamos la nueva tubería y la añadimos a la tabla de resultados.
+		local x = cell_info.type < 12 and random_x or cell_info.x
+		local y = cell_info.type < 12 and random_y or cell_info.y
 		local random_cell = {
-			x = random_x,
-			y = random_y,
-			pipe_type = cell_info.pipe_type
+			x = x,
+			y = y,
+			type = cell_info.type
 		}
 		table.insert(random_pipes, random_cell)
 	end
@@ -109,20 +139,20 @@ function B.place_random_pipes(level_table)
 	local random_pipes = B.get_random_pipes(level_table)
 	local random_placed_pipes = {}
 	for i, cell in ipairs(random_pipes) do
-		local cell_to_save = B.place_pipe(cell.pipe_type, cell.x, cell.y)
+		local cell_to_save = B.place_pipe(cell.type, cell.x, cell.y)
 		table.insert(random_placed_pipes, cell_to_save)
 	end
 	return random_placed_pipes
 end
 
-function B.place_pipe(pipe_type, iso_x, iso_y)
+function B.place_pipe(type, iso_x, iso_y)
 	local z = B.get_z_for_cell(iso_x, iso_y)
 	local world_pos_with_z = B.iso_to_world(iso_x, iso_y, z)
 	--print(iso_x, iso_y, z)
-	local pipe_id = factory.create("#" .. pipe_type .. "_factory", world_pos_with_z)
+	local pipe_id = factory.create("#pipe_" .. type .. "_factory", world_pos_with_z)
 	local cell_to_save = {
 		id = pipe_id,
-		pipe_type = pipe_type,
+		type = type,
 		x = iso_x,
 		y = iso_y
 	}
@@ -141,6 +171,10 @@ function B.get_z_for_cell(iso_x, iso_y)
 	local y_z = 0.5 - (iso_y / 100) - 0.01
 	local z = x_z + y_z
 	return z
+end
+
+function B.factory_pipe(type)
+	return factory.create("#pipe_".. type .."_factory", vmath.vector3(0))
 end
 
 return B

@@ -1,7 +1,7 @@
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"pipe_0_left\"\n"
+  data: "default_animation: \"pipe_13\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"
@@ -11,5 +11,6 @@ embedded_components {
   scale {
     x: 0.75
     y: 0.75
+    z: 0.75
   }
 }

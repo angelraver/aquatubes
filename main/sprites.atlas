@@ -56,9 +56,9 @@ images {
   image: "/assets/img/pipes/pipe_11.png"
 }
 images {
-  image: "/assets/img/pipes/pipe_0_right.png"
+  image: "/assets/img/pipes/pipe_12.png"
 }
 images {
-  image: "/assets/img/pipes/pipe_0_left.png"
+  image: "/assets/img/pipes/pipe_13.png"
 }
 extrude_borders: 2

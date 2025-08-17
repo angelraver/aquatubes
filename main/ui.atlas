@@ -13,4 +13,7 @@ images {
 images {
   image: "/assets/img/ui/x.png"
 }
+images {
+  image: "/assets/img/ui/menu.png"
+}
 extrude_borders: 2
