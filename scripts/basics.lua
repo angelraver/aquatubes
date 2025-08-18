@@ -83,32 +83,59 @@ function B.delete_cell_by_coords(current_table, x, y)
 end
 
 function B.check_level_complete(level_pipes_table, board_pipes_table )
-	if #board_pipes_table > 0 then
-		local errors = 0
-		for _, cell in ipairs(level_pipes_table) do
-			local good_pipe = B.get_cell_by_coords(board_pipes_table, cell.x, cell.y)
-			if not good_pipe then
+	print("..................................")
+	local errors = 0
+	for _, cell in ipairs(level_pipes_table) do
+		local board_pipe = B.get_cell_by_coords(board_pipes_table, cell.x, cell.y)
+		if board_pipe then
+			if (board_pipe.type ~= cell.type) then 
+				print(board_pipe.type, cell.x, cell.y)
 				errors = errors + 1
 			end
+		else
+			print("falta ", cell.x, cell.y)
+			errors = errors + 1
 		end
-		return errors == 0
-	else
-		return false
 	end
+	return errors == 0
 end
 
--- @description Genera una lista de tuberías en posiciones aleatorias,
--- evitando las celdas prohibidas y sin repetir posiciones.
+-- @description Genera una lista de tuberías, colocando algunas en posiciones aleatorias.
+-- Evita las celdas prohibidas y las posiciones de celdas con type > 20.
+-- Las celdas con type > 20 mantienen su posición original y no son aleatorias.
 -- @param level_table La tabla de nivel que define cuántas tuberías y de qué tipo crear.
--- @return Una nueva tabla con las tuberías en posiciones aleatorias válidas.
+-- @return Una nueva tabla con las tuberías en posiciones válidas (aleatorias y fijas).
 function B.get_random_pipes(level_table)
 	local random_pipes = {}
 	local occupied_cells = {}
+
+	-- 1. Inicializamos las celdas ocupadas con las celdas prohibidas por defecto.
 	for key, value in pairs(C.BANNED_CELLS_SET) do
 		occupied_cells[key] = value
 	end
-	-- Ahora, iteramos sobre el nivel para crear cada tubería aleatoria.
+
+	-- Creamos una lista temporal para las celdas que sí necesitan una posición aleatoria.
+	local cells_to_randomize = {}
+
+	-- 2. PRIMERA PASADA:
+	-- Separamos las celdas fijas (type > 20) de las que necesitan una posición aleatoria.
+	-- Las celdas fijas se añaden directamente al resultado y sus posiciones se marcan como ocupadas.
 	for _, cell_info in ipairs(level_table) do
+		if cell_info.type > 20 then
+			-- Esta celda es fija. Su posición no puede ser usada por otras.
+			local key = cell_info.x .. "," .. cell_info.y
+			occupied_cells[key] = true
+			-- La añadimos directamente a la tabla de resultados sin modificarla.
+			table.insert(random_pipes, cell_info)
+		else
+			-- Esta celda necesita una posición aleatoria. La guardamos para después.
+			table.insert(cells_to_randomize, cell_info)
+		end
+	end
+
+	-- 3. SEGUNDA PASADA:
+	-- Ahora, iteramos sobre las celdas que necesitan una posición aleatoria para asignársela.
+	for _, cell_info in ipairs(cells_to_randomize) do
 		local random_x, random_y
 		local key
 		-- Buscamos una celda aleatoria que NO esté ocupada.
@@ -118,12 +145,16 @@ function B.get_random_pipes(level_table)
 			random_y = B.get_random_number(0, 8)
 			key = random_x .. "," .. random_y
 		until not occupied_cells[key]
+
 		-- Una vez encontrada una celda válida, la marcamos como ocupada
-		-- para evitar que futuras tuberías en esta misma llamada usen esta celda (evita repetidos).
+		-- para evitar que futuras tuberías usen esta celda.
 		occupied_cells[key] = true
+
 		-- Creamos la nueva tubería y la añadimos a la tabla de resultados.
+		-- Se mantiene la lógica original para el caso de type < 12.
 		local x = cell_info.type < 12 and random_x or cell_info.x
 		local y = cell_info.type < 12 and random_y or cell_info.y
+
 		local random_cell = {
 			x = x,
 			y = y,

@@ -61,4 +61,67 @@ images {
 images {
   image: "/assets/img/pipes/pipe_13.png"
 }
+images {
+  image: "/assets/img/pipes/pipe_30.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_31.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_32.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_33.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_34.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_35.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_36.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_37.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_38.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_39.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_101.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_102.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_103.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_104.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_105.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_106.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_107.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_108.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_109.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_110.png"
+}
+images {
+  image: "/assets/img/pipes/pipe_111.png"
+}
 extrude_borders: 2

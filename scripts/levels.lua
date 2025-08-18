@@ -1,5 +1,31 @@
 local Levels = {}
+
 Levels.level_1 = {
+	{ type = 13, x = 9, y = 7 },
+	{ type = 1, x = 0, y = 2 },
+	{ type = 1, x = 1, y = 2 },
+	{ type = 5, x = 2, y = 2 },
+	{ type = 6, x = 2, y = 3 },
+	{ type = 1, x = 3, y = 3 },
+	{ type = 1, x = 5, y = 3 },
+	{ type = 6, x = 8, y = 7 },
+	{ type = 2, x = 8, y = 5 },
+	{ type = 6, x = 7, y = 4 },
+	{ type = 5, x = 8, y = 4 },
+	{ type = 5, x = 7, y = 3 },
+	{ type = 30, x = 6, y = 4 },
+	{ type = 30, x = 6, y = 2 },
+	{ type = 30, x = 7, y = 5 },
+	{ type = 30, x = 8, y = 3 },
+	{ type = 30, x = 7, y = 2 },
+	{ type = 36, x = 4, y = 2 },
+	{ type = 36, x = 4, y = 4 },
+	{ type = 101, x = 4, y = 3 },
+	{ type = 101, x = 6, y = 3 },
+	{ type = 102, x = 8, y = 6 }
+}
+
+Levels.level_111 = {
 	{ type = 13, x = 9, y = 7 },
 	{ type = 13, x = 9, y = 6 },
 	{ type = 4, x = 8, y = 7 },
