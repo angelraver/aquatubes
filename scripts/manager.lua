@@ -1,6 +1,6 @@
 local MANAGER = {
 	current_scene = "menu",
-	sound_on = false
+	sound_on = true
 }
 
 return MANAGER

@@ -83,17 +83,17 @@ function B.delete_cell_by_coords(current_table, x, y)
 end
 
 function B.check_level_complete(level_pipes_table, board_pipes_table )
-	print("..................................")
+	--print("..................................")
 	local errors = 0
 	for _, cell in ipairs(level_pipes_table) do
 		local board_pipe = B.get_cell_by_coords(board_pipes_table, cell.x, cell.y)
 		if board_pipe then
 			if (board_pipe.type ~= cell.type) then 
-				print(board_pipe.type, cell.x, cell.y)
+				--print(board_pipe.type, cell.x, cell.y)
 				errors = errors + 1
 			end
 		else
-			print("falta ", cell.x, cell.y)
+			--print("falta ", cell.x, cell.y)
 			errors = errors + 1
 		end
 	end

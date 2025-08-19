@@ -9,3 +9,8 @@ Thumbs.db
 .project
 .cproject
 builtins
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/settings.json
+debugger/debugger.lua
+debugger/debugger.script
