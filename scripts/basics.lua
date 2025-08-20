@@ -88,8 +88,8 @@ function B.check_level_complete(level_pipes_table, board_pipes_table )
 	for _, cell in ipairs(level_pipes_table) do
 		local board_pipe = B.get_cell_by_coords(board_pipes_table, cell.x, cell.y)
 		if board_pipe then
-			if (board_pipe.type ~= cell.type) then 
-				--print(board_pipe.type, cell.x, cell.y)
+			if (board_pipe.t ~= cell.t) then 
+				--print(board_pipe.t, cell.x, cell.y)
 				errors = errors + 1
 			end
 		else
@@ -101,8 +101,8 @@ function B.check_level_complete(level_pipes_table, board_pipes_table )
 end
 
 -- @description Genera una lista de tuberías, colocando algunas en posiciones aleatorias.
--- Evita las celdas prohibidas y las posiciones de celdas con type > 20.
--- Las celdas con type > 20 mantienen su posición original y no son aleatorias.
+-- Evita las celdas prohibidas y las posiciones de celdas con t > 20.
+-- Las celdas con t > 20 mantienen su posición original y no son aleatorias.
 -- @param level_table La tabla de nivel que define cuántas tuberías y de qué tipo crear.
 -- @return Una nueva tabla con las tuberías en posiciones válidas (aleatorias y fijas).
 function B.get_random_pipes(level_table)
@@ -118,10 +118,10 @@ function B.get_random_pipes(level_table)
 	local cells_to_randomize = {}
 
 	-- 2. PRIMERA PASADA:
-	-- Separamos las celdas fijas (type > 20) de las que necesitan una posición aleatoria.
+	-- Separamos las celdas fijas (t > 20) de las que necesitan una posición aleatoria.
 	-- Las celdas fijas se añaden directamente al resultado y sus posiciones se marcan como ocupadas.
 	for _, cell_info in ipairs(level_table) do
-		if cell_info.type > 20 then
+		if cell_info.t > 20 then
 			-- Esta celda es fija. Su posición no puede ser usada por otras.
 			local key = cell_info.x .. "," .. cell_info.y
 			occupied_cells[key] = true
@@ -151,14 +151,14 @@ function B.get_random_pipes(level_table)
 		occupied_cells[key] = true
 
 		-- Creamos la nueva tubería y la añadimos a la tabla de resultados.
-		-- Se mantiene la lógica original para el caso de type < 12.
-		local x = cell_info.type < 12 and random_x or cell_info.x
-		local y = cell_info.type < 12 and random_y or cell_info.y
+		-- Se mantiene la lógica original para el caso de t < 12.
+		local x = cell_info.t < 12 and random_x or cell_info.x
+		local y = cell_info.t < 12 and random_y or cell_info.y
 
 		local random_cell = {
 			x = x,
 			y = y,
-			type = cell_info.type
+			t = cell_info.t
 		}
 		table.insert(random_pipes, random_cell)
 	end
@@ -170,20 +170,20 @@ function B.place_random_pipes(level_table)
 	local random_pipes = B.get_random_pipes(level_table)
 	local random_placed_pipes = {}
 	for i, cell in ipairs(random_pipes) do
-		local cell_to_save = B.place_pipe(cell.type, cell.x, cell.y)
+		local cell_to_save = B.place_pipe(cell.t, cell.x, cell.y)
 		table.insert(random_placed_pipes, cell_to_save)
 	end
 	return random_placed_pipes
 end
 
-function B.place_pipe(type, iso_x, iso_y)
+function B.place_pipe(t, iso_x, iso_y)
 	local z = B.get_z_for_cell(iso_x, iso_y)
 	local world_pos_with_z = B.iso_to_world(iso_x, iso_y, z)
 	--print(iso_x, iso_y, z)
-	local pipe_id = factory.create("#pipe_" .. type .. "_factory", world_pos_with_z)
+	local pipe_id = factory.create("#pipe_" .. t .. "_factory", world_pos_with_z)
 	local cell_to_save = {
 		id = pipe_id,
-		type = type,
+		t = t,
 		x = iso_x,
 		y = iso_y
 	}
@@ -204,8 +204,8 @@ function B.get_z_for_cell(iso_x, iso_y)
 	return z
 end
 
-function B.factory_pipe(type)
-	return factory.create("#pipe_".. type .."_factory", vmath.vector3(0))
+function B.factory_pipe(t)
+	return factory.create("#pipe_".. t .."_factory", vmath.vector3(0))
 end
 
 return B

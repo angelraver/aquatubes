@@ -36,7 +36,7 @@ function  on_input(self, action_id, action)
 
 		if gui.pick_node(self.play_button, action.x, action.y) then
 			-- print("start game")
-			msg.post("main:/main", "change_scene", { scene = "level" })
+			msg.post("main:/main", "change_scene", { scene = "level_grid" })
 		end
 
 		--if gui.pick_node(self.exit_button, action.x, action.y) then

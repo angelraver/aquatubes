@@ -1,0 +1,33 @@
+script: "/scripts/level_grid.gui_script"
+fonts {
+  name: "arcade"
+  font: "/assets/fonts/arcade.font"
+}
+textures {
+  name: "ui"
+  texture: "/main/ui.atlas"
+}
+nodes {
+  position {
+    x: -200.0
+    y: -200.0
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_button_template"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "arcade"
+  id: "level_number"
+  parent: "level_button_template"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

@@ -2,14 +2,17 @@ local MANAGER = require "scripts.manager"
 local EDIT_MODE = false
 
 local function switch_to_scene(new_scene)
-	if new_scene == "level" then
-		MANAGER.current_scene ="level"
-		msg.post("#menu", "unload")
-		msg.post("#level", "load")
-	elseif new_scene == "menu" then
+	if new_scene == "menu" then
 		MANAGER.current_scene = "menu"
-		msg.post("#level", "unload")
 		msg.post("#menu", "load")
+	elseif new_scene == "level_grid" then
+		MANAGER.current_scene ="level_grid"
+		msg.post("#menu", "unload")
+		msg.post("#level_grid", "load")
+	elseif new_scene == "level" then
+		MANAGER.current_scene ="level"
+		msg.post("#level_grid", "unload")
+		msg.post("#level", "load")
 	end	
 end
 

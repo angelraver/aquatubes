@@ -16,4 +16,13 @@ images {
 images {
   image: "/assets/img/ui/menu.png"
 }
+images {
+  image: "/assets/img/ui/level_blocked.png"
+}
+images {
+  image: "/assets/img/ui/level_done.png"
+}
+images {
+  image: "/assets/img/ui/next.png"
+}
 extrude_borders: 2

@@ -24,5 +24,11 @@ embedded_instances {
   "  data: \"collection: \\\"/main/level_editor.collection\\\"\\n"
   "\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"level_grid\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/main/level_grid.collection\\\"\\n"
+  "\"\n"
+  "}\n"
   ""
 }

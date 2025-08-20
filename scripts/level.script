@@ -1,13 +1,13 @@
 local B = require "scripts.basics"
 local C = require "scripts.config"
 local Grid = require "scripts.grid"
-local Levels = require "scripts.levels"
+local LEVELS = require "scripts.levels"
 local MANAGER = require("scripts.manager")
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	math.randomseed(os.time())
-	self.grid_level = Levels.level_1
+	self.grid_level = LEVELS["l_" .. MANAGER.current_level]
 	self.pipe_handled = nil
 	self.level_complete = false
 	self.board_pipes = B.place_random_pipes(self.grid_level)
@@ -34,39 +34,38 @@ function on_input(self, action_id, action)
 			local updated_cell
 			if action.released then
 				local cell_with_pipe = B.get_cell_by_coords(self.board_pipes, iso_x, iso_y)	-- verificando si hay pipe en la celda clickeada
-
 				-- [[ NUEVA VERIFICACIÓN ]]
 				-- Comprobamos si existe una tubería en la celda y si su tipo es mayor a 20.
-				if cell_with_pipe and cell_with_pipe.type > 20 then
-					-- Si es así, la celda está bloqueada. No hacemos nada.
-					print("celda bloqueada") -- Aquí puedes poner un sonido de "acción no permitida".
+				if cell_with_pipe and cell_with_pipe.t > 20 then -- Si es así, la celda está bloqueada. No hacemos nada.
+					sound.play("/sound_controller#block")
 				else
 					-- Si la celda no está bloqueada (o está vacía), procedemos con la lógica original.
 					if self.pipe_handled then	-- hay un pipe seleccionado
 						if cell_with_pipe then	-- click en celda con pipe -> intercambio los pipes:
+							sound.play("/sound_controller#clac_1")
 							go.delete(self.hover_tile)	-- borro el hover_tile
 							go.delete(cell_with_pipe.id)	-- borro del tablero el pipe presente
 							B.delete_cell_by_coords(self.board_pipes, iso_x, iso_y)	-- borro la celda de la tabla tablero
-							updated_cell = B.place_pipe(self.pipe_handled.type, iso_x, iso_y)	-- deposito en el tablero el pipe_handle
+							updated_cell = B.place_pipe(self.pipe_handled.t, iso_x, iso_y)	-- deposito en el tablero el pipe_handle
 							table.insert(self.board_pipes, updated_cell)	-- guardo la celda alterada en la tabla tablero
 							self.pipe_handled = cell_with_pipe	-- reemplazo el pipe_handled
-							self.hover_tile = B.factory_pipe(cell_with_pipe.type)	-- creo un hover_tile con el pipe presente
-							sound.play("/sound_controller#clac_1")
+							self.hover_tile = B.factory_pipe(cell_with_pipe.t)	-- creo un hover_tile con el pipe presente
 						else	--click en celda sin pipe -> deposito el pipe_handled
+							sound.play("/sound_controller#clac_1")
 							go.delete(self.hover_tile)	-- borro el hover_tile
-							updated_cell = B.place_pipe(self.pipe_handled.type, iso_x, iso_y)	-- deposito en el tablero el pipe_handle
+							updated_cell = B.place_pipe(self.pipe_handled.t, iso_x, iso_y)	-- deposito en el tablero el pipe_handle
 							table.insert(self.board_pipes, updated_cell)	-- guardo la celda alterada en la tabla tablero
 							self.pipe_handled = nil	-- vacio el pipe_handled
 							self.hover_tile = factory.create("#hover_factory", vmath.vector3(0)) -- reestablezco el hover tile
-							sound.play("/sound_controller#clac_1")
 						end
 					else	-- no hay pipe seleccionado
 						if cell_with_pipe then	-- click en celda con pipe -> tomamos el pipe
+							sound.play("/sound_controller#pick")
 							self.pipe_handled = cell_with_pipe -- guardo la celda en el pipe_handled
 							go.delete(self.hover_tile) -- borro el hove actual
 							go.delete(cell_with_pipe.id) -- borro del tablero el pipe presente
 							B.delete_cell_by_coords(self.board_pipes, iso_x, iso_y)	-- borro la celda de la tabla tablero
-							self.hover_tile = B.factory_pipe(cell_with_pipe.type)	-- creo un hover_tile con el pipe presente
+							self.hover_tile = B.factory_pipe(cell_with_pipe.t)	-- creo un hover_tile con el pipe presente
 						end
 						--------------- click en celda sin pipe no hacemos nada
 					end
