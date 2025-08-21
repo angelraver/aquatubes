@@ -1,7 +1,7 @@
 name: "main"
 scale_along_z: 0
 embedded_instances {
-  id: "main"
+  id: "scene_manager"
   data: "components {\n"
   "  id: \"scene_parent\"\n"
   "  component: \"/scripts/main.script\"\n"
@@ -34,7 +34,11 @@ embedded_instances {
 }
 embedded_instances {
   id: "sound_manager"
-  data: "embedded_components {\n"
+  data: "components {\n"
+  "  id: \"sound_manager\"\n"
+  "  component: \"/scripts/sound_manager.script\"\n"
+  "}\n"
+  "embedded_components {\n"
   "  id: \"theme\"\n"
   "  type: \"sound\"\n"
   "  data: \"sound: \\\"/assets/sound/theme_2.ogg\\\"\\n"

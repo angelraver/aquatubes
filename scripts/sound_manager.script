@@ -1,6 +1,4 @@
 function init(self)
-	-- Al iniciar, enviamos un mensaje a este mismo script para que comience la música.
-	-- Esto asegura que otros sistemas se hayan inicializado primero.
 	msg.post("#", "play_theme")
 end
 
