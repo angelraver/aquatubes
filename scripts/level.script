@@ -14,6 +14,7 @@ function init(self)
 	self.hover_tile = factory.create("#hover_factory", vmath.vector3(0))
 	if (MANAGER.sound_on) then
 		sound.play("/sound_controller#theme")
+		msg.post("main:/sound_manager#sound_manager", "stop_theme")
 	end
 end
 

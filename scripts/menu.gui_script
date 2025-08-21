@@ -10,27 +10,19 @@ function init(self)
 	self.sound_button = gui.get_node("sound_button")
 	self.play_button = gui.get_node("play_button")
 
-	if (MANAGER.sound_on) then
-		sound.play("/menu#theme")
-	end
-	
 	msg.post(".", "acquire_input_focus")
 end
 
 function  on_input(self, action_id, action)
 	if action_id == hash("touch") and action.pressed then
 		if gui.pick_node(self.sound_button, action.x, action.y) then
-			--print("SOUND!")
 			MANAGER.sound_on = not MANAGER.sound_on
 			update_sound_icon(MANAGER.sound_on)
-			-- Envía un mensaje al script del menú para que reaccione
 			if MANAGER.sound_on then
-				-- Envía el mensaje "play_theme" a la URL del script de menú
-				-- Debes asegurarte que la URL "/menu#script" es correcta
-				msg.post("menu:/menu#main_menu", "play_theme")
+				msg.post("main:/sound_manager#sound_manager", "play_theme")
 			else
 				-- Envía el mensaje "stop_theme"
-				msg.post("menu:/menu#main_menu", "stop_theme")
+					msg.post("main:/sound_manager#sound_manager", "stop_theme")
 			end
 		end
 
@@ -54,10 +46,10 @@ function on_message(self, message_id, message, sender)
 	-- Comprueba el "id" del mensaje que ha llegado
 	if message_id == hash("play_theme") then
 		-- Si no está sonando ya, la reproduce (opcional, para evitar múltiples reproducciones)
-		sound.play("/menu#theme")
+--		sound.play("main:/#theme")
 	elseif message_id == hash("stop_theme") then
 		-- Detiene el sonido del componente "theme"
-		sound.stop("/menu#theme")
+--		sound.stop("main:/#theme")
 	end
 
 

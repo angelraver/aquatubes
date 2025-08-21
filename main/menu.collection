@@ -6,11 +6,5 @@ embedded_instances {
   "  id: \"main_menu\"\n"
   "  component: \"/main/menu.gui\"\n"
   "}\n"
-  "embedded_components {\n"
-  "  id: \"theme\"\n"
-  "  type: \"sound\"\n"
-  "  data: \"sound: \\\"/assets/sound/theme_2.ogg\\\"\\n"
-  "\"\n"
-  "}\n"
   ""
 }

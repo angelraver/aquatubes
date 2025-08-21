@@ -169,8 +169,24 @@ end
 function B.place_random_pipes(level_table)
 	local random_pipes = B.get_random_pipes(level_table)
 	local random_placed_pipes = {}
+	local retraso_actual = 0
+	local incremento_retraso = 0.1 -- Cada pipe caerá 0.1 segundos después del anterior
+
 	for i, cell in ipairs(random_pipes) do
-		local cell_to_save = B.place_pipe(cell.t, cell.x, cell.y)
+		local pipe_id
+		if(cell.t < 12 or cell.t > 100) then -- solo las pipes fijas o random van a caer y rebotar
+			pipe_id = B.bounce_pipe(cell.t, cell.x, cell.y, retraso_actual)
+			retraso_actual = retraso_actual + incremento_retraso
+		else
+			pipe_id = B.place_pipe(cell.t, cell.x, cell.y)
+		end
+
+		local cell_to_save = {
+			id = pipe_id,
+			t = cell.t,
+			x = cell.x,
+			y = cell.y
+		}
 		table.insert(random_placed_pipes, cell_to_save)
 	end
 	return random_placed_pipes
@@ -189,6 +205,35 @@ function B.place_pipe(t, iso_x, iso_y)
 	}
 	return cell_to_save
 end
+
+
+function B.bounce_pipe(t, iso_x, iso_y, delay)
+	delay = delay or 0 --- <<<
+	local z = B.get_z_for_cell(iso_x, iso_y)
+	local final_pos = B.iso_to_world(iso_x, iso_y, z)
+	local start_pos = vmath.vector3(final_pos.x, final_pos.y + 800, final_pos.z)
+	local pipe_id = factory.create("#pipe_" .. t .. "_factory", start_pos)
+	local fall_duration = 1 -- Duración de la caída en segundos
+	local bounce_height = 50  -- Cuán alto será el rebote (en píxeles)
+	local bounce_speed = 0.2  -- Duración de cada fase del rebote
+	go.animate(pipe_id, "position.y", go.PLAYBACK_ONCE_FORWARD, final_pos.y, go.EASING_INEXPO, fall_duration, delay,
+		function()
+			sound.play("/sound_controller#clac_1")
+			go.animate(pipe_id, "position.y", go.PLAYBACK_ONCE_FORWARD, final_pos.y - bounce_height, go.EASING_OUTSINE, bounce_speed, 0,
+				function()
+					go.animate(pipe_id, "position.y", go.PLAYBACK_ONCE_FORWARD, final_pos.y + bounce_height / 3, go.EASING_INOUTSINE, bounce_speed * 1.5, 0,
+						function()
+							go.animate(pipe_id, "position.y", go.PLAYBACK_ONCE_FORWARD, final_pos.y, go.EASING_INQUAD, bounce_speed, 0)
+						end
+					)
+				end
+			)
+		end
+	)
+
+	return pipe_id
+end
+
 
 function B.get_random_number(min_num, max_num)
 	if min_num > max_num then
