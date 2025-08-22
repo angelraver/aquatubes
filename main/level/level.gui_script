@@ -1,0 +1,17 @@
+local M = require("scripts.manager")
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	self.button_next = gui.get_node("button_next")
+	--sound.play("sound_controller#win")
+	--msg.post("sound_controller#win", "play_sound")
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("touch") and action.pressed then
+		if gui.pick_node(self.button_next, action.x, action.y) then
+			sound.play("main:/main#enter")
+			msg.post("main:/main", "change_scene", { scene = M.SCENES.LEVEL_GRID })
+		end
+	end
+end

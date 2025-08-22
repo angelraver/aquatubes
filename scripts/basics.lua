@@ -108,15 +108,12 @@ end
 function B.get_random_pipes(level_table)
 	local random_pipes = {}
 	local occupied_cells = {}
-
 	-- 1. Inicializamos las celdas ocupadas con las celdas prohibidas por defecto.
 	for key, value in pairs(C.BANNED_CELLS_SET) do
 		occupied_cells[key] = value
 	end
-
 	-- Creamos una lista temporal para las celdas que sí necesitan una posición aleatoria.
 	local cells_to_randomize = {}
-
 	-- 2. PRIMERA PASADA:
 	-- Separamos las celdas fijas (t > 20) de las que necesitan una posición aleatoria.
 	-- Las celdas fijas se añaden directamente al resultado y sus posiciones se marcan como ocupadas.

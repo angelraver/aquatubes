@@ -1,0 +1,34 @@
+script: "/main/level/level.gui_script"
+textures {
+  name: "ui"
+  texture: "/main/sprites/ui.atlas"
+}
+textures {
+  name: "sprites"
+  texture: "/main/sprites/sprites.atlas"
+}
+nodes {
+  position {
+    x: 300.0
+    y: 374.0
+    z: 1.0
+  }
+  type: TYPE_BOX
+  texture: "ui/next"
+  id: "button_next"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 295.0
+    y: 486.0
+  }
+  type: TYPE_BOX
+  texture: "sprites/done"
+  id: "win_message"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

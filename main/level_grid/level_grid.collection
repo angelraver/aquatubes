@@ -1,0 +1,10 @@
+name: "level_grid"
+scale_along_z: 0
+embedded_instances {
+  id: "game_controller"
+  data: "components {\n"
+  "  id: \"level_grid\"\n"
+  "  component: \"/main/level_grid/level_grid.gui\"\n"
+  "}\n"
+  ""
+}

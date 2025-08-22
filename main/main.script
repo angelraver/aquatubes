@@ -1,0 +1,54 @@
+local M = require "scripts.manager"
+local EDIT_MODE = false
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	msg.post("#", "play_theme")
+
+	if EDIT_MODE then
+		msg.post("#level_editor", "load")
+	else
+		msg.post("#menu", "load")
+	end
+end
+
+function switch_to_scene(new_scene)
+	if M.current_scene == M.SCENES.MENU then
+		msg.post("#menu", "unload")
+		elseif M.current_scene == M.SCENES.LEVEL_GRID then
+		msg.post("#level_grid", "unload")
+	elseif M.current_scene == M.SCENES.LEVEL then
+		msg.post("#level", "unload")
+	end
+
+	M.current_scene = new_scene
+
+	if M.current_scene == M.SCENES.MENU then
+		msg.post("#menu", "load")
+	elseif M.current_scene == M.SCENES.LEVEL_GRID then
+		msg.post("#level_grid", "load")
+	elseif M.current_scene == M.SCENES.LEVEL then
+		msg.post("#level", "load")
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "enable")
+	end
+
+	if message_id == hash("change_scene") and message.scene then
+		switch_to_scene(message.scene)
+	end
+
+	if message_id == hash("toggle_sound") then
+		M.sound_on = not M.sound_on
+	end
+
+	if message_id == hash("play_theme") then
+		sound.play("#theme", nil, function() end)-- El "nil, function()" es para que no nos devuelva un mensaje cuando termine, ya que está en bucle y nunca terminará.
+	elseif message_id == hash("stop_theme") then
+		sound.stop("#theme")
+	end
+
+end
