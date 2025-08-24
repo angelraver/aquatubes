@@ -13,7 +13,10 @@ high_dpi = 1
 input_method = HiddenInputField
 
 [html5]
-scale_mode = stretch
+scale_mode = fit
+show_made_with_defold = 0
+show_fullscreen_button = 0
+show_console_banner = 0
 
 [project]
 title = aquatubes
