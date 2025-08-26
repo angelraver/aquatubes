@@ -43,6 +43,7 @@ nodes {
   id: "sound_pie"
   parent: "sound_button"
   inherit_alpha: true
+  outerBounds: PIEBOUNDS_RECTANGLE
   size_mode: SIZE_MODE_AUTO
 }
 nodes {

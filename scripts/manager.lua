@@ -24,20 +24,31 @@ M.world_1 =  {
 	{ l = 12, open = false, done = false },
 	{ l = 13, open = false, done = false },
 	{ l = 14, open = false, done = false },
-	{ l = 15, open = false, done = false }
+	{ l = 15, open = false, done = false },
+	{ l = 16, open = false, done = false },
+	{ l = 17, open = false, done = false },
+	{ l = 18, open = false, done = false },
+	{ l = 19, open = false, done = false },
+	{ l = 20, open = false, done = false }
 }
 
-function M.complete_level()
-  local next_level_to_open = M.current_level + 1
+function M.refresh_levels()
   for i, level_data in ipairs(M["world_" .. M.current_world]) do
-    if level_data.l == M.current_level then-- encontramos el nivel que se completó, lo marcamos como 'done = true'
-      level_data.done = true
+    if level_data.l < M.current_level then-- todos los niveles anteriores al current_level estan open y done
+      level_data.open = true
+			level_data.done = true
     end
-
-    if level_data.l == next_level_to_open then-- si encontramos el siguiente nivel, lo marcamos como 'open = true'
+    if level_data.l == M.current_level then -- el current_level está en open
       level_data.open = true
     end
 	end
 end
+
+function M.complete_level()
+	M.current_level = M.current_level + 1
+	msg.post("main:/progress_manager", "level_completed", { world = M.current_world, level = M.current_level })
+	M.refresh_levels()
+end
+
 
 return M

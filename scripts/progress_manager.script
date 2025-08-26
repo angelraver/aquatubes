@@ -1,0 +1,37 @@
+local M = require("scripts.manager")
+
+local SAVE_FILE = "aquatubes.dat"
+
+local function load_progress()
+	local data = sys.load(SAVE_FILE)
+	if data.world == nil then
+		M.current_world = 1
+		M.current_level = 1
+	else
+		M.current_world = data.world
+		M.current_level = data.level
+	end
+end
+
+local function save_progress(data)
+	local success = sys.save(SAVE_FILE, data)
+	--pprint(data)
+	return success
+end
+
+local function level_completed(world, level)
+	local data = {}
+	data.world = world
+	data.level = level
+	save_progress(data)
+end
+
+function init(self)
+	load_progress()
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("level_completed") then
+		level_completed(message.world, message.level)
+	end
+end

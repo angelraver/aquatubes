@@ -231,6 +231,29 @@ function B.bounce_pipe(t, iso_x, iso_y, delay)
 	return pipe_id
 end
 
+function B.place_pipes(level_table)
+	local placed_pipes = {}
+	for i, cell in ipairs(level_table) do
+		pipe_id = B.place_pipe(cell.t, cell.x, cell.y)
+		local cell_to_save = {
+			id = pipe_id,
+			t = cell.t,
+			x = cell.x,
+			y = cell.y
+		}
+		table.insert(placed_pipes, cell_to_save)
+	end
+	return placed_pipes
+end
+
+function B.delete_all_pipes(board_table)
+	for i, cell in ipairs(board_table) do
+		--if cell.id ~= nil and go.exists(cell.id) then
+		if cell.id ~= nil then
+			go.delete(cell.id)
+		end
+	end
+end
 
 function B.get_random_number(min_num, max_num)
 	if min_num > max_num then

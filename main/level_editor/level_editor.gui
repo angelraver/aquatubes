@@ -1,18 +1,619 @@
 script: "/main/level_editor/level_editor.gui_script"
+fonts {
+  name: "arcade"
+  font: "/assets/fonts/arcade.font"
+}
 textures {
   name: "ui"
   texture: "/main/sprites/ui.atlas"
 }
 nodes {
   position {
-    x: 544.0
-    y: 52.0
+    x: 34.0
+    y: 129.0
   }
   type: TYPE_BOX
   texture: "ui/menu"
   id: "menu_button"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 467.0
+    y: 18.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_12"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "12"
+  font: "arcade"
+  id: "text1"
+  parent: "level_12"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 505.0
+    y: 55.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_7"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "7"
+  font: "arcade"
+  id: "text9"
+  parent: "level_7"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 543.0
+    y: 129.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "1"
+  font: "arcade"
+  id: "text"
+  parent: "level_1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 505.0
+    y: 92.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_3"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "3"
+  font: "arcade"
+  id: "text10"
+  parent: "level_3"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 467.0
+    y: 55.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_6"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "6"
+  font: "arcade"
+  id: "text11"
+  parent: "level_6"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 429.0
+    y: 18.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_11"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "11"
+  font: "arcade"
+  id: "text14"
+  parent: "level_11"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 543.0
+    y: 55.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_8"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "8"
+  font: "arcade"
+  id: "text13"
+  parent: "level_8"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 505.0
+    y: 18.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_13"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "13"
+  font: "arcade"
+  id: "text12"
+  parent: "level_13"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 543.0
+    y: 18.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_14"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "14"
+  font: "arcade"
+  id: "text8"
+  parent: "level_14"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 581.0
+    y: 129.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_2"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "2"
+  font: "arcade"
+  id: "text7"
+  parent: "level_2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 581.0
+    y: 55.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_9"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "9"
+  font: "arcade"
+  id: "text6"
+  parent: "level_9"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 543.0
+    y: 92.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_4"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "4"
+  font: "arcade"
+  id: "text5"
+  parent: "level_4"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 581.0
+    y: 92.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_5"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "5"
+  font: "arcade"
+  id: "text4"
+  parent: "level_5"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 391.0
+    y: 18.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_10"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "10"
+  font: "arcade"
+  id: "text3"
+  parent: "level_10"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 581.0
+    y: 18.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_15"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "15"
+  font: "arcade"
+  id: "text2"
+  parent: "level_15"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 34.0
+    y: 74.0
+  }
+  size {
+    x: 50.0
+    y: 50.0
+  }
+  type: TYPE_BOX
+  id: "sound_button"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    y: 3.0
+  }
+  type: TYPE_PIE
+  texture: "ui/sound_on"
+  id: "sound_pie"
+  parent: "sound_button"
+  inherit_alpha: true
+  outerBounds: PIEBOUNDS_RECTANGLE
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 20.0
+    y: 19.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "world_1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "1"
+  font: "arcade"
+  id: "text15"
+  parent: "world_1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 60.0
+    y: 19.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "world_2"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 1.333333
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "2"
+  font: "arcade"
+  id: "text16"
+  parent: "world_2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 99.0
+    y: 19.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "world_3"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "3"
+  font: "arcade"
+  id: "text17"
+  parent: "world_3"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 138.0
+    y: 19.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "world_4"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "4"
+  font: "arcade"
+  id: "text18"
+  parent: "world_4"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 177.0
+    y: 19.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "world_5"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "5"
+  font: "arcade"
+  id: "text19"
+  parent: "world_5"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 216.0
+    y: 19.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "world_6"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "6"
+  font: "arcade"
+  id: "text20"
+  parent: "world_6"
+  inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

@@ -52,3 +52,11 @@ embedded_instances {
   "}\n"
   ""
 }
+embedded_instances {
+  id: "progress_manager"
+  data: "components {\n"
+  "  id: \"progress_manager\"\n"
+  "  component: \"/scripts/progress_manager.script\"\n"
+  "}\n"
+  ""
+}

@@ -1,18 +1,7 @@
 local M = require "scripts.manager"
 local EDIT_MODE = false
 
-function init(self)
-	msg.post(".", "acquire_input_focus")
-	msg.post("#", "play_theme")
-
-	if EDIT_MODE then
-		msg.post("#level_editor", "load")
-	else
-		msg.post("#menu", "load")
-	end
-end
-
-function switch_to_scene(new_scene)
+local function switch_to_scene(new_scene)
 	if M.current_scene == M.SCENES.MENU then
 		msg.post("#menu", "unload")
 		elseif M.current_scene == M.SCENES.LEVEL_GRID then
@@ -29,6 +18,17 @@ function switch_to_scene(new_scene)
 		msg.post("#level_grid", "load")
 	elseif M.current_scene == M.SCENES.LEVEL then
 		msg.post("#level", "load")
+	end
+end
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	msg.post("#", "play_theme")
+
+	if EDIT_MODE then
+		msg.post("#level_editor", "load")
+	else
+		msg.post("#menu", "load")
 	end
 end
 

@@ -2,7 +2,7 @@ local M = require("scripts.manager")
 
 local function generate_level_grid(self)
 	local button_template = gui.get_node("level_button_template")
-	local columns = 3
+	local columns = 4
 	local button_size = gui.get_size(button_template)
 	local spacing = vmath.vector3(20, 20, 0) -- Espacio entre botones
 	local start_x = 200
@@ -46,6 +46,7 @@ end
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.level_buttons = {}
+	M.refresh_levels()
 	generate_level_grid(self)
 end
 

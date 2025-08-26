@@ -1,6 +1,7 @@
 local B = require "scripts.basics"
 local C = require "scripts.config"
 local Grid = require "scripts.grid"
+local L = require "scripts.levels"
 
 local PIPES = {
 	{ t = 1, x = 9, y = 13 },
@@ -40,12 +41,13 @@ local PIPES = {
 	{ t = 38, x = 12, y = 9 },
 	{ t = 39, x = 13, y = 8 },
 
-	
 }
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	math.randomseed(os.time())
+	self.selected_world = 1
+	self.selected_level = 0
 	self.pipe_handled = nil
 	self.board_pipes = {}
 	self.hover_tile = factory.create("#hover_factory", vmath.vector3(0))
@@ -116,6 +118,11 @@ function on_input(self, action_id, action)
 	end
 end
 
+function load_level(self)
+	B.delete_all_pipes(self.board_pipes)
+	self.board_pipes = B.place_pipes(L["world_" .. self.selected_world]["l_" .. self.selected_level])
+end
+
 function update(self, dt)
 	Grid.draw_grid()
 end
@@ -124,6 +131,15 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("print_board") then
 		for i, cell in ipairs(self.board_pipes) do
 			print("{ t = " .. cell.t .. ", x = ".. cell.x ..", y = " .. cell.y .." },")
+		end
+	end
+
+	if message_id == hash("level_selected") then
+		self.selected_world = message.world
+		self.selected_level = message.level
+		if (self.selected_level > 0) then
+			load_level(self)
+			print("NIVEL: " ..  message.world .. "-" .. message.level)
 		end
 	end
 end
