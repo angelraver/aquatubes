@@ -1,30 +1,23 @@
 local C = {}
----
 -- Calcula la altura isométrica requerida para un ángulo de 30 grados,
 -- dado un ancho de celda específico.
---
 -- @param tile_width El ancho de la celda isométrica.
 -- @return El alto correspondiente para mantener una perspectiva de 30 grados.
---
 function calculate_iso_height_for_30_degrees(tile_width)
 	-- La relación para un ángulo de 30° es que la altura es el ancho dividido por la raíz cuadrada de 3.
 	-- tan(30°) = altura / ancho  =>  altura = ancho * tan(30°)  =>  altura = ancho / sqrt(3)
 	return tile_width / math.sqrt(3)
 end
 
----
 -- Versión de la función que redondea el resultado al entero más cercano.
 -- Esto es útil para evitar sub-píxeles y alinear todo a una grilla de píxeles.
---
 -- @param tile_width El ancho de la celda isométrica.
 -- @return El alto redondeado al entero más cercano.
---
 function calculate_iso_height_rounded(tile_width)
 	local exact_height = calculate_iso_height_for_30_degrees(tile_width)
 	-- math.floor(x + 0.5) es una forma estándar en Lua de redondear al entero más cercano.
 	return math.floor(exact_height + 0.5)
 end
-
 
 C.SCREEN_WIDTH = 640
 C.SCREEN_HEIGHT = 780

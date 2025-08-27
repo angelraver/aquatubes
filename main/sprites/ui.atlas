@@ -25,4 +25,13 @@ images {
 images {
   image: "/assets/img/ui/next.png"
 }
+images {
+  image: "/assets/img/ui/world.png"
+}
+images {
+  image: "/assets/img/ui/world_blocked.png"
+}
+images {
+  image: "/assets/img/ui/world_done.png"
+}
 extrude_borders: 2
