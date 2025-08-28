@@ -1,5 +1,5 @@
 local M = require "scripts.manager"
-local EDIT_MODE = false
+local EDIT_MODE = true
 
 local function switch_to_scene(new_scene)
 	if M.current_scene == M.SCENES.MENU then
