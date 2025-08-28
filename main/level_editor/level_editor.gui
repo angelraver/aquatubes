@@ -20,8 +20,8 @@ nodes {
 }
 nodes {
   position {
-    x: 467.0
-    y: 18.0
+    x: 581.0
+    y: 55.0
   }
   scale {
     x: 0.75
@@ -41,14 +41,14 @@ nodes {
   type: TYPE_TEXT
   text: "12"
   font: "arcade"
-  id: "text1"
+  id: "text_12"
   parent: "level_12"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 505.0
-    y: 55.0
+    x: 580.0
+    y: 92.0
   }
   scale {
     x: 0.75
@@ -68,13 +68,13 @@ nodes {
   type: TYPE_TEXT
   text: "7"
   font: "arcade"
-  id: "text9"
+  id: "text_7"
   parent: "level_7"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 543.0
+    x: 505.0
     y: 129.0
   }
   scale {
@@ -95,14 +95,14 @@ nodes {
   type: TYPE_TEXT
   text: "1"
   font: "arcade"
-  id: "text"
+  id: "text_1"
   parent: "level_1"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 505.0
-    y: 92.0
+    x: 581.0
+    y: 129.0
   }
   scale {
     x: 0.75
@@ -122,14 +122,14 @@ nodes {
   type: TYPE_TEXT
   text: "3"
   font: "arcade"
-  id: "text10"
+  id: "text_3"
   parent: "level_3"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 467.0
-    y: 55.0
+    x: 543.0
+    y: 92.0
   }
   scale {
     x: 0.75
@@ -149,14 +149,14 @@ nodes {
   type: TYPE_TEXT
   text: "6"
   font: "arcade"
-  id: "text11"
+  id: "text_6"
   parent: "level_6"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 429.0
-    y: 18.0
+    x: 543.0
+    y: 55.0
   }
   scale {
     x: 0.75
@@ -176,13 +176,13 @@ nodes {
   type: TYPE_TEXT
   text: "11"
   font: "arcade"
-  id: "text14"
+  id: "text_11"
   parent: "level_11"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 543.0
+    x: 430.0
     y: 55.0
   }
   scale {
@@ -203,13 +203,13 @@ nodes {
   type: TYPE_TEXT
   text: "8"
   font: "arcade"
-  id: "text13"
+  id: "text_8"
   parent: "level_8"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 505.0
+    x: 317.0
     y: 18.0
   }
   scale {
@@ -230,13 +230,13 @@ nodes {
   type: TYPE_TEXT
   text: "13"
   font: "arcade"
-  id: "text12"
+  id: "text_13"
   parent: "level_13"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 543.0
+    x: 355.0
     y: 18.0
   }
   scale {
@@ -257,13 +257,13 @@ nodes {
   type: TYPE_TEXT
   text: "14"
   font: "arcade"
-  id: "text8"
+  id: "text_14"
   parent: "level_14"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 581.0
+    x: 543.0
     y: 129.0
   }
   scale {
@@ -284,13 +284,13 @@ nodes {
   type: TYPE_TEXT
   text: "2"
   font: "arcade"
-  id: "text7"
+  id: "text_2"
   parent: "level_2"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 581.0
+    x: 467.0
     y: 55.0
   }
   scale {
@@ -311,13 +311,13 @@ nodes {
   type: TYPE_TEXT
   text: "9"
   font: "arcade"
-  id: "text6"
+  id: "text_9"
   parent: "level_9"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 543.0
+    x: 468.0
     y: 92.0
   }
   scale {
@@ -338,13 +338,13 @@ nodes {
   type: TYPE_TEXT
   text: "4"
   font: "arcade"
-  id: "text5"
+  id: "text_4"
   parent: "level_4"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 581.0
+    x: 505.0
     y: 92.0
   }
   scale {
@@ -365,14 +365,14 @@ nodes {
   type: TYPE_TEXT
   text: "5"
   font: "arcade"
-  id: "text4"
+  id: "text_5"
   parent: "level_5"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 391.0
-    y: 18.0
+    x: 505.0
+    y: 55.0
   }
   scale {
     x: 0.75
@@ -392,13 +392,13 @@ nodes {
   type: TYPE_TEXT
   text: "10"
   font: "arcade"
-  id: "text3"
+  id: "text_10"
   parent: "level_10"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 581.0
+    x: 392.0
     y: 18.0
   }
   scale {
@@ -419,7 +419,7 @@ nodes {
   type: TYPE_TEXT
   text: "15"
   font: "arcade"
-  id: "text2"
+  id: "text_15"
   parent: "level_15"
   inherit_alpha: true
 }
@@ -473,7 +473,7 @@ nodes {
   type: TYPE_TEXT
   text: "1"
   font: "arcade"
-  id: "text15"
+  id: "text_world_1"
   parent: "world_1"
   inherit_alpha: true
 }
@@ -503,7 +503,7 @@ nodes {
   type: TYPE_TEXT
   text: "2"
   font: "arcade"
-  id: "text16"
+  id: "text_world_2"
   parent: "world_2"
   inherit_alpha: true
 }
@@ -530,7 +530,7 @@ nodes {
   type: TYPE_TEXT
   text: "3"
   font: "arcade"
-  id: "text17"
+  id: "text_world_3"
   parent: "world_3"
   inherit_alpha: true
 }
@@ -557,7 +557,7 @@ nodes {
   type: TYPE_TEXT
   text: "4"
   font: "arcade"
-  id: "text18"
+  id: "text_world_4"
   parent: "world_4"
   inherit_alpha: true
 }
@@ -584,7 +584,7 @@ nodes {
   type: TYPE_TEXT
   text: "5"
   font: "arcade"
-  id: "text19"
+  id: "text_world_5"
   parent: "world_5"
   inherit_alpha: true
 }
@@ -611,8 +611,143 @@ nodes {
   type: TYPE_TEXT
   text: "6"
   font: "arcade"
-  id: "text20"
+  id: "text_world_6"
   parent: "world_6"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 505.0
+    y: 18.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_18"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "18"
+  font: "arcade"
+  id: "text_18"
+  parent: "level_18"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 430.0
+    y: 18.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_16"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "16"
+  font: "arcade"
+  id: "text_16"
+  parent: "level_16"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 467.0
+    y: 18.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_17"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "17"
+  font: "arcade"
+  id: "text_17"
+  parent: "level_17"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 581.0
+    y: 18.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_20"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "20"
+  font: "arcade"
+  id: "text_20"
+  parent: "level_20"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 543.0
+    y: 18.0
+  }
+  scale {
+    x: 0.75
+    y: 0.75
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_19"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "19"
+  font: "arcade"
+  id: "text_19"
+  parent: "level_19"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
