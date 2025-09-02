@@ -93,11 +93,6 @@ local function refresh_level_grid(self)
 		local sprite_name = "level_blocked"
 		gui.play_flipbook(level_button.node, hash(sprite_name))
 
-
-		if level_button.level == 6 then
-			print(M.current_world .. "<=" .. M.completed_worlds + 1 ..  " and " ..  level_button.level .. "==" .. M.completed_levels + 1)
-		end
-
 		if (M.current_world == M.completed_worlds + 1 and level_button.level == 1 and M.completed_levels == C.LEVEL_COUNT) or (M.current_world < M.completed_worlds and level_button.level < M.completed_levels) or (M.current_world <= M.completed_worlds + 1 and level_button.level == M.completed_levels + 1) then
 			sprite_name = "level"
 			level_button.open = true
@@ -115,10 +110,10 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.level_buttons = {}
 	self.world_buttons = {}
-
+--msg.post("prpr", "level_completed")
 	generate_world_grid(self)
 	generate_level_grid(self)
-
+print("REFRESH WORLDS")
 	refresh_world_grid(self)
 	refresh_level_grid(self)
 end
@@ -158,6 +153,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("level_completed") then
+		print("LEVEL COMPLETED")
 		refresh_world_grid(self)
 		refresh_level_grid(self)
 	end

@@ -1,4 +1,4 @@
-script: "/main/level_selector/level_selector.gui_script"
+script: "/main/levels/levels.gui_script"
 fonts {
   name: "arcade"
   font: "/assets/fonts/arcade.font"

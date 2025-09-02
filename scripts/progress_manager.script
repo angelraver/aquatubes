@@ -18,24 +18,24 @@ local function load_progress()
 		M.completed_worlds = data.world
 		M.completed_levels = data.level
 	end
+		print("DATA LOADED " .. M.completed_worlds, M.completed_levels)
 end
 
 local function level_completed()
 	if M.current_level < C.LEVEL_COUNT and M.current_level > M.completed_levels and M.current_world > M.completed_worlds then
 		print("save 1")
 		save_progress({ world = M.completed_worlds, level = M.current_level })
-		msg.post("level_selector:/game_controller#level_selector", "level_completed")
 	end
-
+	
 	if M.current_level == C.LEVEL_COUNT then
 		print("save 2")
 		save_progress({ world = M.current_world + 1, level = M.current_level })
-		msg.post("level_selector:/game_controller#level_selector", "level_completed")
 	end
+
 end
 
 function init(self)
-	save_progress({ world = 0, level = 0})
+--	save_progress({ world = 0, level = 0})
 	load_progress()
 end
 

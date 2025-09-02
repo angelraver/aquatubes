@@ -9,7 +9,7 @@ function init(self)
 	math.randomseed(os.time())
 	self.level_grid = L["world_" .. M.current_world]["l_" .. M.current_level]
 	self.pipe_handled = nil
-	self.level_complete = false
+	self.level_completed = false
 	self.board_pipes = B.place_random_pipes(self.level_grid)
 	self.hover_tile = factory.create("#hover_factory", vmath.vector3(0))
 	if (M.sound_on) then
@@ -22,7 +22,7 @@ function on_input(self, action_id, action)
 	-- screen_to_iso ahora devuelve nil, nil si no hay una celda válida
 	local iso_x, iso_y = B.screen_to_iso(action.x, action.y)
 
-	if iso_x ~= nil and iso_y ~= nil and not self.level_complete then -- estamos en el area de la grilla
+	if iso_x ~= nil and iso_y ~= nil and not self.level_completed then -- estamos en el area de la grilla
 		local key = iso_x .. "," .. iso_y
 		if not C.BANNED_CELLS_SET[key] then --Estamos sobre una celda válida.
 			local world_pos = B.iso_to_world(iso_x, iso_y)
@@ -71,12 +71,12 @@ function on_input(self, action_id, action)
 						--------------- click en celda sin pipe no hacemos nada
 					end
 
-					self.level_complete = B.check_level_complete(self.level_grid, self.board_pipes)
-					if (self.level_complete) then
+					self.level_completed = B.check_level_completed(self.level_grid, self.board_pipes)
+					if (self.level_completed) then
 						go.delete(self.hover_tile)-- borro el hover
 						msg.post(".", "release_input_focus")
 						msg.post("/gui_controller#level", "show_win_message")
-						msg.post("main:/progress_manager", "level_completed")
+						msg.post("levels:/aprogress_manager", "level_completed")
 						sound.play("sound_controller#win")
 					end
 				end

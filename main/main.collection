@@ -25,9 +25,9 @@ embedded_instances {
   "\"\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"level_selector\"\n"
+  "  id: \"levels\"\n"
   "  type: \"collectionproxy\"\n"
-  "  data: \"collection: \\\"/main/level_selector/level_selector.collection\\\"\\n"
+  "  data: \"collection: \\\"/main/levels/levels.collection\\\"\\n"
   "\"\n"
   "}\n"
   "embedded_components {\n"
@@ -49,14 +49,6 @@ embedded_instances {
   "  type: \"sound\"\n"
   "  data: \"sound: \\\"/assets/sound/block.ogg\\\"\\n"
   "\"\n"
-  "}\n"
-  ""
-}
-embedded_instances {
-  id: "progress_manager"
-  data: "components {\n"
-  "  id: \"progress_manager\"\n"
-  "  component: \"/scripts/progress_manager.script\"\n"
   "}\n"
   ""
 }

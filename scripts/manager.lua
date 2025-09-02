@@ -7,7 +7,7 @@ M.completed_levels = 0
 M.completed_worlds = 0
 M.SCENES = {
 	MENU = "menu",
-	LEVEL_SELECTOR = "level_selector",
+	LEVELS = "levels",
 	LEVEL = "level"
 }
 M.current_scene = M.SCENES.MENU

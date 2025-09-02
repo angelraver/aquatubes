@@ -82,7 +82,7 @@ function B.delete_cell_by_coords(current_table, x, y)
 	end
 end
 
-function B.check_level_complete(level_pipes_table, board_pipes_table )
+function B.check_level_completed(level_pipes_table, board_pipes_table )
 	--print("..................................")
 	local errors = 0
 	for _, cell in ipairs(level_pipes_table) do
