@@ -5,7 +5,6 @@ local L = require "scripts.levels"
 local M = require("scripts.manager")
 
 function init(self)
-	msg.post("gui_controller#win", "disable")
 	msg.post(".", "acquire_input_focus")
 	math.randomseed(os.time())
 	self.level_grid = L["world_" .. M.current_world]["l_" .. M.current_level]
@@ -76,8 +75,8 @@ function on_input(self, action_id, action)
 					if (self.level_complete) then
 						go.delete(self.hover_tile)-- borro el hover
 						msg.post(".", "release_input_focus")
-						msg.post("gui_controller#win", "enable")
-						M.complete_level()
+						msg.post("/gui_controller#level", "show_win_message")
+						msg.post("main:/progress_manager", "level_completed")
 						sound.play("sound_controller#win")
 					end
 				end

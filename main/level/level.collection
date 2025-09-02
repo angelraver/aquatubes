@@ -48,7 +48,7 @@ scale_along_z: 0
 embedded_instances {
   id: "game_controller"
   data: "components {\n"
-  "  id: \"main\"\n"
+  "  id: \"level_script\"\n"
   "  component: \"/main/level/level.script\"\n"
   "}\n"
   "embedded_components {\n"
@@ -316,7 +316,7 @@ embedded_instances {
 embedded_instances {
   id: "gui_controller"
   data: "components {\n"
-  "  id: \"win\"\n"
+  "  id: \"level\"\n"
   "  component: \"/main/level/level.gui\"\n"
   "}\n"
   ""

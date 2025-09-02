@@ -228,7 +228,7 @@ embedded_instances {
   ""
 }
 embedded_instances {
-  id: "buttons"
+  id: "gui_controller"
   data: "components {\n"
   "  id: \"level_editor\"\n"
   "  component: \"/main/level_editor/level_editor.gui\"\n"

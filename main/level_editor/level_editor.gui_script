@@ -1,7 +1,7 @@
 local L = require "scripts.levels"
+local M = require "scripts.manager"
 local WORLDS_N = 6
 local LEVELS_N = 20
-
 
 local function update_world_buttons(self)
 	for i = 1, WORLDS_N do
@@ -32,12 +32,6 @@ local function update_level_buttons(self)
   end
 end
 
-local function update_sound_icon(is_on)
-	local texture = is_on and "sound_on" or "sound_off"
-	local node = gui.get_node("sound_pie")
-	gui.play_flipbook(node, texture)
-end
-
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.sound_on = true
@@ -51,13 +45,9 @@ function  on_input(self, action_id, action)
 	if action_id == hash("touch") and action.pressed then
 
 		if gui.pick_node(gui.get_node("sound_button"), action.x, action.y) then
-			self.sound_on = not self.sound_on
-			update_sound_icon(self.sound_on)
-			if self.sound_on then
-				msg.post("main:/main", "play_theme")
-			else
-				msg.post("main:/main", "stop_theme")
-			end
+			msg.post("main:/main", "sound_toggle")
+			local texture = M.sound_on and "sound_off" or "sound_on"
+			gui.play_flipbook(gui.get_node("sound_pie"), texture)
 		end
 
 		if gui.pick_node(self.menu_button, action.x, action.y) then

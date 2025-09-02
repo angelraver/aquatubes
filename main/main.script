@@ -1,29 +1,24 @@
 local M = require "scripts.manager"
-local EDIT_MODE = true
+local EDIT_MODE = false
 
 local function switch_to_scene(new_scene)
-	if M.current_scene == M.SCENES.MENU then
-		msg.post("#menu", "unload")
-		elseif M.current_scene == M.SCENES.LEVEL_GRID then
-		msg.post("#level_grid", "unload")
-	elseif M.current_scene == M.SCENES.LEVEL then
-		msg.post("#level", "unload")
-	end
-
+	msg.post("#" .. M.current_scene, "unload")
 	M.current_scene = new_scene
+	msg.post("#" .. M.current_scene, "load")
+end
 
-	if M.current_scene == M.SCENES.MENU then
-		msg.post("#menu", "load")
-	elseif M.current_scene == M.SCENES.LEVEL_GRID then
-		msg.post("#level_grid", "load")
-	elseif M.current_scene == M.SCENES.LEVEL then
-		msg.post("#level", "load")
+local function sound_toggle()
+	M.sound_on = not M.sound_on
+	if M.sound_on then
+		sound.play("#theme", nil, function() end)-- El "nil, function()" es para que no nos devuelva un mensaje cuando termine, ya que está en bucle y nunca terminará.
+	else
+		sound.stop("#theme")
 	end
 end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	msg.post("#", "play_theme")
+	sound.play("#theme")
 
 	if EDIT_MODE then
 		msg.post("#level_editor", "load")
@@ -38,6 +33,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("change_scene") and message.scene then
+		sound.play("#enter")
 		switch_to_scene(message.scene)
 	end
 
@@ -45,10 +41,7 @@ function on_message(self, message_id, message, sender)
 		M.sound_on = not M.sound_on
 	end
 
-	if message_id == hash("play_theme") then
-		sound.play("#theme", nil, function() end)-- El "nil, function()" es para que no nos devuelva un mensaje cuando termine, ya que está en bucle y nunca terminará.
-	elseif message_id == hash("stop_theme") then
-		sound.stop("#theme")
+	if message_id == hash("sound_toggle") then
+		sound_toggle()
 	end
-
 end

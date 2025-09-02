@@ -32,6 +32,6 @@ images {
   image: "/assets/img/ui/world_blocked.png"
 }
 images {
-  image: "/assets/img/ui/world_done.png"
+  image: "/assets/img/ui/world_selected.png"
 }
 extrude_borders: 2

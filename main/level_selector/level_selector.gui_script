@@ -1,17 +1,16 @@
 local M = require("scripts.manager")
 local C = require "scripts.config"
-local WORLD_COUNT = 6
-local LEVEL_COUNT = 20
+
 
 local function generate_world_grid(self)
 	local button_template = gui.get_node("world_button_template")
 	local columns = 3
 	local button_size = gui.get_size(button_template)
-	local spacing = vmath.vector3(20, 20, 0) -- Espacio entre botones
+	local spacing = vmath.vector3(20, 20, 0)
 	local start_x = 200
 	local start_y = C.SCREEN_HEIGHT - 100
 
-	for i = 1, WORLD_COUNT do
+	for i = 1, C.WORLD_COUNT do
 		local row = math.floor((i - 1) / columns)
 		local col = (i - 1) % columns
 		local pos_x = start_x + col * (button_size.x + spacing.x)
@@ -23,28 +22,36 @@ local function generate_world_grid(self)
 		gui.set_enabled(button_node, true)
 		local text_node_template = gui.get_node("world_number")-- El nodo de texto hijo
 		local text_node = new_button_nodes[gui.get_id(text_node_template)]
-		gui.set_text(text_node, tostring("World " .. i))
-		local is_open = true
-		local sprite_name
-		if i < M.current_world then
-			sprite_name = "world_done"
-		elseif i == M.current_world then
-			sprite_name = "world"
-		else
-			is_open = false
-			sprite_name = "world_blocked"
-		end
-
+		gui.set_text(text_node, tostring("World \n" .. i))
 		table.insert(self.world_buttons, {
 			node = button_node,
 			world = i,
-			open = is_open
+			open = false,
+			done = false
 		})
 
-		gui.play_flipbook(button_node, hash(sprite_name))
 	end
 
 	gui.set_enabled(button_template, false)-- Deshabilita la plantilla original para que no sea visible
+end
+
+local function refresh_world_grid(self)
+	for i, world_button in ipairs(self.world_buttons) do
+		local sprite_name = "world_blocked"
+		gui.play_flipbook(world_button.node, hash(sprite_name))
+
+		if (world_button.world == M.completed_worlds + 1 and M.completed_levels == C.LEVEL_COUNT) or (world_button.world <= M.completed_worlds) then
+			sprite_name = "world"
+			world_button.open = true
+		end
+
+		if world_button.world == M.current_world then
+			sprite_name = "world_selected"
+			world_button.open = true
+		end
+
+		gui.play_flipbook(world_button.node, hash(sprite_name))
+	end
 end
 
 local function generate_level_grid(self)
@@ -55,7 +62,7 @@ local function generate_level_grid(self)
 	local start_x = 200
 	local start_y = 400
 
-	for i = 1, LEVEL_COUNT do
+	for i = 1, C.LEVEL_COUNT do
 		local row = math.floor((i - 1) / columns)
 		local col = (i - 1) % columns
 		local pos_x = start_x + col * (button_size.x + spacing.x)
@@ -68,36 +75,52 @@ local function generate_level_grid(self)
 		local text_node_template = gui.get_node("level_number")-- El nodo de texto hijo
 		local text_node = new_button_nodes[gui.get_id(text_node_template)]
 		gui.set_text(text_node, tostring(i))
-		local is_open = true
-		local sprite_name
-		if i < M.current_level then
-			sprite_name = "level_done"
-		elseif i == M.current_level then
-			sprite_name = "level"
-		else
-			is_open = false
-			sprite_name = "level_blocked"
-		end
-
-		gui.play_flipbook(button_node, hash(sprite_name))
-
+		local is_open = false
+		local is_done = false
 		table.insert(self.level_buttons, {
 			node = button_node,
 			level = i,
-			open = is_open
+			open = is_open,
+			done = is_done
 		})
 	end
 
 	gui.set_enabled(button_template, false)-- Deshabilita la plantilla original para que no sea visible
 end
 
+local function refresh_level_grid(self)
+	for i, level_button in ipairs(self.level_buttons) do
+		local sprite_name = "level_blocked"
+		gui.play_flipbook(level_button.node, hash(sprite_name))
+
+
+		if level_button.level == 6 then
+			print(M.current_world .. "<=" .. M.completed_worlds + 1 ..  " and " ..  level_button.level .. "==" .. M.completed_levels + 1)
+		end
+
+		if (M.current_world == M.completed_worlds + 1 and level_button.level == 1 and M.completed_levels == C.LEVEL_COUNT) or (M.current_world < M.completed_worlds and level_button.level < M.completed_levels) or (M.current_world <= M.completed_worlds + 1 and level_button.level == M.completed_levels + 1) then
+			sprite_name = "level"
+			level_button.open = true
+		elseif M.current_world <= M.completed_worlds or level_button.level <= M.completed_levels then
+			sprite_name = "level_done"
+			level_button.open = true
+		end
+
+		gui.play_flipbook(level_button.node, hash(sprite_name))
+	end
+
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.level_buttons = {}
 	self.world_buttons = {}
-	M.refresh_levels()
+
 	generate_world_grid(self)
 	generate_level_grid(self)
+
+	refresh_world_grid(self)
+	refresh_level_grid(self)
 end
 
 function on_input(self, action_id, action)
@@ -107,7 +130,8 @@ function on_input(self, action_id, action)
 			if gui.pick_node(world_button.node, action.x, action.y) then
 				if world_button.open then
 					M.current_world = world_button.world
-					generate_level_grid(self)
+					refresh_world_grid(self)
+					refresh_level_grid(self)
 					sound.play("main:/main#enter")
 				else
 					sound.play("main:/main#blocked")
@@ -130,4 +154,11 @@ function on_input(self, action_id, action)
 		end
 	end
 	return false
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("level_completed") then
+		refresh_world_grid(self)
+		refresh_level_grid(self)
+	end
 end

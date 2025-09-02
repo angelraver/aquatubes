@@ -1,4 +1,4 @@
-script: "/main/level_grid/level_grid.gui_script"
+script: "/main/level_selector/level_selector.gui_script"
 fonts {
   name: "arcade"
   font: "/assets/fonts/arcade.font"
@@ -12,11 +12,14 @@ nodes {
     x: -200.0
     y: -200.0
   }
+  size {
+    x: 50.0
+    y: 49.0
+  }
   type: TYPE_BOX
   texture: "ui/level"
   id: "level_button_template"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   size {

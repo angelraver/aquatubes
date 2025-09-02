@@ -30,8 +30,7 @@ C.GRID_HEIGHT_EDIT = 20
 
 C.TILE_WIDTH = 105
 C.TILE_HEIGHT = calculate_iso_height_rounded(C.TILE_WIDTH)
----C.TILE_HEIGHT = 40
---print(C.TILE_HEIGHT)
+
 C.VERTICAL_OFFSET = -100
 C.HORIZONTAL_OFFSET = 30
 
@@ -55,5 +54,8 @@ C.BANNED_CELLS_SET = {
 	["7,0"] = true,
 	["6,0"] = true,
 }
+
+C.WORLD_COUNT = 6
+C.LEVEL_COUNT = 20
 
 return C
