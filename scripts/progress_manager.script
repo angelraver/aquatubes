@@ -3,44 +3,47 @@ local M = require("scripts.manager")
 local SAVE_FILE = "aquatubes.dat"
 
 local function save_progress(data)
-	print("saving...")
-	local success = sys.save(SAVE_FILE, data)
-	pprint(data)
-	return success
+    print("saving...")
+    local success = sys.save(SAVE_FILE, data)
+    -- pprint(data)
+    return success
 end
 
 local function load_progress()
-	local data = sys.load(SAVE_FILE)
-	if data.world == nil then
-		M.completed_worlds = 1
-		M.completed_levels = 1
-	else
-		M.completed_worlds = data.world
-		M.completed_levels = data.level
-	end
-		print("DATA LOADED " .. M.completed_worlds, M.completed_levels)
+    local data = sys.load(SAVE_FILE)
+    if data.world == nil then
+        M.completed_worlds = 1
+        M.completed_levels = 1
+    else
+        M.completed_worlds = data.world
+        M.completed_levels = data.level
+    end
+    print("DATA LOADED " .. M.completed_worlds, M.completed_levels)
 end
 
 local function level_completed()
-	if M.current_level < C.LEVEL_COUNT and M.current_level > M.completed_levels and M.current_world > M.completed_worlds then
-		print("save 1")
-		save_progress({ world = M.completed_worlds, level = M.current_level })
-	end
-	
-	if M.current_level == C.LEVEL_COUNT then
-		print("save 2")
-		save_progress({ world = M.current_world + 1, level = M.current_level })
-	end
-
+    --print(".........progress manager level completed")
+    --print(M.current_level, "==",C.LEVEL_COUNT, "and", M.current_world, "==", M.completed_worlds + 1)
+    --print(M.current_world, ">", M.completed_worlds, "and", M.current_level, ">", M.completed_levels)
+    --print(".......................")
+    if M.current_level == C.LEVEL_COUNT and M.current_world == M.completed_worlds + 1 then
+        print("save 1")
+        save_progress({ world = M.current_world, level = M.current_level })
+    elseif M.current_world > M.completed_worlds and M.current_level > M.completed_levels then
+        print("save 2")
+        save_progress({ world = M.completed_worlds, level = M.current_level })
+    end
 end
 
 function init(self)
---	save_progress({ world = 0, level = 0})
-	load_progress()
+    -- save_progress({ world = 1, level = 19})
+    load_progress()
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("level_completed") then
-		level_completed()
-	end
+    if message_id == hash("level_completed") then
+        print("progress manager")
+        level_completed()
+        load_progress()
+    end
 end
