@@ -34,4 +34,7 @@ images {
 images {
   image: "/assets/img/ui/world_selected.png"
 }
+images {
+  image: "/assets/img/menu_background.png"
+}
 extrude_borders: 2

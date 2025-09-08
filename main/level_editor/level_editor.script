@@ -130,7 +130,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("print_board") then
 		for i, cell in ipairs(self.board_pipes) do
-			print("{ t = " .. cell.t .. ", x = ".. cell.x ..", y = " .. cell.y .." },")
+		--	print("{ t = " .. cell.t .. ", x = ".. cell.x ..", y = " .. cell.y .." },")
 		end
 	end
 
@@ -139,7 +139,7 @@ function on_message(self, message_id, message, sender)
 		self.selected_level = message.level
 		if (self.selected_level > 0) then
 			load_level(self)
-			print("NIVEL: " ..  message.world .. "-" .. message.level)
+		--	print("NIVEL: " ..  message.world .. "-" .. message.level)
 		end
 	end
 end

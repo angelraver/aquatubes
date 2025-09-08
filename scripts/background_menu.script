@@ -1,0 +1,52 @@
+local C = require "scripts.config"
+local tile_size = 200
+local speed = 50
+
+function init(self)
+	self.tiles = {}
+
+	-- Calcular cuántos tiles necesitamos para cubrir la pantalla + 1 fila/columna extra
+	local cols = math.ceil(C.SCREEN_WIDTH / tile_size) + 2
+	local rows = math.ceil(C.SCREEN_HEIGHT / tile_size) + 2
+
+	-- Crear la cuadrícula de tiles
+	for y = 0, rows - 1 do
+		for x = 0, cols - 1 do
+			local pos = vmath.vector3(x * tile_size, y * tile_size, 0)
+			local id = factory.create("#tile_factory", pos)
+			table.insert(self.tiles, { id = id, pos = pos })
+		end
+	end
+
+	self.cols = cols
+	self.rows = rows
+	self.tile_size = tile_size
+	self.move_vector = vmath.vector3(-1, -1, 0) -- diagonal izquierda-abajo
+end
+
+function update(self, dt)
+	local move = self.move_vector * speed * dt
+	local grid_width = self.cols * self.tile_size
+	local grid_height = self.rows * self.tile_size
+	
+	for _, tile in ipairs(self.tiles) do
+		-- Mover el tile en dirección diagonal
+		tile.pos = tile.pos + move
+
+		-- Reposicionar horizontalmente si sale de la izquierda o derecha
+		if tile.pos.x < -self.tile_size then
+			tile.pos.x = tile.pos.x + grid_width
+		elseif tile.pos.x > (self.cols - 1) * self.tile_size then
+			tile.pos.x = tile.pos.x - grid_width
+		end
+
+		-- Reposicionar verticalmente si sale por abajo o arriba
+		if tile.pos.y < -self.tile_size then
+			tile.pos.y = tile.pos.y + grid_height
+		elseif tile.pos.y > (self.rows - 1) * self.tile_size then
+			tile.pos.y = tile.pos.y - grid_height
+		end
+
+		go.set_position(tile.pos, tile.id)
+	end
+end

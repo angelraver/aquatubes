@@ -3,7 +3,7 @@ local M = require("scripts.manager")
 local SAVE_FILE = "aquatubes.dat"
 
 local function save_progress(data)
-    print("saving...")
+    --print("saving...")
     local success = sys.save(SAVE_FILE, data)
     -- pprint(data)
     return success
@@ -18,7 +18,7 @@ local function load_progress()
         M.completed_worlds = data.world
         M.completed_levels = data.level
     end
-    print("DATA LOADED " .. M.completed_worlds, M.completed_levels)
+    --print("DATA LOADED " .. M.completed_worlds, M.completed_levels)
 end
 
 local function level_completed()
@@ -27,10 +27,10 @@ local function level_completed()
     --print(M.current_world, ">", M.completed_worlds, "and", M.current_level, ">", M.completed_levels)
     --print(".......................")
     if M.current_level == C.LEVEL_COUNT and M.current_world == M.completed_worlds + 1 then
-        print("save 1")
+        --print("save 1")
         save_progress({ world = M.current_world, level = M.current_level })
     elseif M.current_world > M.completed_worlds and M.current_level > M.completed_levels then
-        print("save 2")
+        --print("save 2")
         save_progress({ world = M.completed_worlds, level = M.current_level })
     end
 end
@@ -42,7 +42,7 @@ end
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("level_completed") then
-        print("progress manager")
+        --print("progress manager")
         level_completed()
         load_progress()
     end

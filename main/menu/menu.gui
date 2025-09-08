@@ -3,6 +3,10 @@ fonts {
   name: "default"
   font: "/builtins/fonts/default.font"
 }
+fonts {
+  name: "arcade"
+  font: "/assets/fonts/arcade.font"
+}
 textures {
   name: "ui"
   texture: "/main/sprites/ui.atlas"
@@ -55,6 +59,21 @@ nodes {
   id: "logo"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 296.0
+    y: 50.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "2025"
+  font: "arcade"
+  id: "copy"
+  inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

@@ -89,7 +89,6 @@ local function generate_level_grid(self)
 end
 
 local function refresh_level_grid(self)
-    print("refresh_level_grid")
     for i, level_button in ipairs(self.level_buttons) do
         local sprite_name = "level_blocked"
         -- print(M.current_world, " == ", M.completed_worlds + 1,") and ((",level_button.level, " == ", M.completed_levels + 1, " and ", M.current_level," < ", C.LEVEL_COUNT,") or (",level_button.level, " == ", 1, " and ", M.completed_levels, " == ", C.LEVEL_COUNT,"))")
@@ -116,7 +115,7 @@ function init(self)
     generate_world_grid(self)
     generate_level_grid(self)
 
-        refresh_world_grid(self)
+    refresh_world_grid(self)
     refresh_level_grid(self)
 end
 
