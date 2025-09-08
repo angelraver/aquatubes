@@ -234,7 +234,7 @@ end
 function B.place_pipes(level_table)
 	local placed_pipes = {}
 	for i, cell in ipairs(level_table) do
-		pipe_id = B.place_pipe(cell.t, cell.x, cell.y)
+		local pipe_id = B.place_pipe(cell.t, cell.x, cell.y)
 		local cell_to_save = {
 			id = pipe_id,
 			t = cell.t,

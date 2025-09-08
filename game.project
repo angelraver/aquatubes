@@ -23,3 +23,15 @@ show_console_banner = 0
 [project]
 title = aquatubes
 
+[collectionfactory]
+max_count = 1000
+
+[collection_proxy]
+max_count = 80
+
+[factory]
+max_count = 1000
+
+[sprite]
+max_count = 1000
+
