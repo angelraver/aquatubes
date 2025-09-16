@@ -1,5 +1,5 @@
 local M = require "scripts.manager"
-local EDIT_MODE = false
+local EDIT_MODE = false1
 
 local function switch_to_scene(new_scene)
 	msg.post("#" .. M.current_scene, "unload")
@@ -7,18 +7,26 @@ local function switch_to_scene(new_scene)
 	msg.post("#" .. M.current_scene, "load")
 end
 
+local function theme_stop()
+	sound.stop("#theme")
+end
+
+local function theme_play()
+	sound.play("#theme", nil, function() end)-- El "nil, function()" es para que no nos devuelva un mensaje cuando termine, ya que está en bucle y nunca terminará.
+end
+
 local function sound_toggle()
 	M.sound_on = not M.sound_on
 	if M.sound_on then
-		sound.play("#theme", nil, function() end)-- El "nil, function()" es para que no nos devuelva un mensaje cuando termine, ya que está en bucle y nunca terminará.
+		theme_play()
 	else
-		sound.stop("#theme")
+		theme_stop()
 	end
 end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	sound.play("#theme")
+	theme_play()
 
 	if EDIT_MODE then
 		msg.post("#level_editor", "load")
@@ -37,11 +45,15 @@ function on_message(self, message_id, message, sender)
 		switch_to_scene(message.scene)
 	end
 
-	if message_id == hash("toggle_sound") then
-		M.sound_on = not M.sound_on
-	end
-
 	if message_id == hash("sound_toggle") then
 		sound_toggle()
+	end
+
+	if message_id == hash("theme_play") then
+		theme_play()	
+	end
+
+	if message_id == hash("theme_stop") then
+		theme_stop()
 	end
 end

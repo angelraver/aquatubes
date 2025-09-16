@@ -4,6 +4,8 @@ local Grid = require "scripts.grid"
 local L = require "scripts.levels"
 local M = require("scripts.manager")
 
+
+
 function init(self)
     msg.post(".", "acquire_input_focus")
     math.randomseed(os.time())
@@ -13,10 +15,6 @@ function init(self)
     self.level_completed = false
     self.board_pipes = B.place_random_pipes(self.level_grid)
     self.hover_tile = factory.create("#hover_factory", vmath.vector3(0))
-    if (M.sound_on) then
-        sound.play("/sound_controller#theme")
-        msg.post("main:/main", "stop_theme")
-    end
 end
 
 function on_input(self, action_id, action)
@@ -34,7 +32,7 @@ function on_input(self, action_id, action)
             end
 
             local updated_cell
-            if action.released then
+            if action.pressed then
                 local cell_with_pipe = B.get_cell_by_coords(self.board_pipes, iso_x, iso_y)    -- verificando si hay pipe en la celda clickeada
                 -- [[ NUEVA VERIFICACIÓN ]]
                 -- Comprobamos si existe una tubería en la celda y si su tipo es mayor a 20.
