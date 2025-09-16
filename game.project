@@ -7,9 +7,10 @@ shared_state = 1
 [display]
 width = 600
 height = 780
-high_dpi = true
+high_dpi = 1
 resizable = 0
 fullscreen = 0
+stretch = fit
 
 [android]
 input_method = HiddenInputField
