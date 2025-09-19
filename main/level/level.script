@@ -90,5 +90,5 @@ end
 
 
 function update(self, dt)
-    --Grid.draw_grid()
+    Grid.draw_grid()
 end

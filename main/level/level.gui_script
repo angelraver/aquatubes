@@ -12,7 +12,7 @@ end
 local function sound_toggle()
 	local texture = M.sound_on and "sound_off" or "sound_on"
 	gui.play_flipbook(gui.get_node("sound_pie"), texture)
-	
+
 	M.sound_on = not M.sound_on
 
 	if M.sound_on then
@@ -36,7 +36,7 @@ end
 
 local function show_ui(self)
 	local left_margin = 40
-	local right_margin = C.SCREEN_WIDTH - gui.get_size(self.button_x).x - 40
+	local right_margin = C.SCREEN_WIDTH - 40
 	local top_margin = C.SCREEN_HEIGHT - 40
 	gui.set_position(self.sound_button, vmath.vector3(left_margin, top_margin, 0))
 	gui.set_position(self.button_x, vmath.vector3(right_margin, top_margin, 0))

@@ -1,14 +1,13 @@
 local M = require("scripts.manager")
 local C = require "scripts.config"
 
-
 local function generate_world_grid(self)
     local button_template = gui.get_node("world_button_template")
     local columns = 3
     local button_size = gui.get_size(button_template)
     local spacing = vmath.vector3(20, 20, 0)
-    local start_x = 200
-    local start_y = C.SCREEN_HEIGHT - 100
+    local start_x = 180
+    local start_y = C.SCREEN_HEIGHT - 80
 
     for i = 1, C.WORLD_COUNT do
         local row = math.floor((i - 1) / columns)
@@ -59,8 +58,8 @@ local function generate_level_grid(self)
     local columns = 4
     local button_size = gui.get_size(button_template)
     local spacing = vmath.vector3(20, 20, 0) -- Espacio entre botones
-    local start_x = 200
-    local start_y = 400
+    local start_x = 157
+    local start_y = 560
 
     for i = 1, C.LEVEL_COUNT do
         local row = math.floor((i - 1) / columns)

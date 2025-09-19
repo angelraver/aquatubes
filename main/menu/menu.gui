@@ -18,7 +18,11 @@ textures {
 nodes {
   position {
     x: 293.0
-    y: 318.0
+    y: 502.0
+  }
+  scale {
+    x: 1.5
+    y: 1.5
   }
   type: TYPE_BOX
   texture: "ui/start"
@@ -41,6 +45,9 @@ nodes {
   visible: false
 }
 nodes {
+  position {
+    y: 223.0
+  }
   type: TYPE_PIE
   texture: "ui/sound_on"
   id: "sound_pie"
@@ -52,7 +59,7 @@ nodes {
 nodes {
   position {
     x: 301.0
-    y: 486.0
+    y: 698.0
   }
   type: TYPE_BOX
   texture: "sprites/logo"
@@ -63,11 +70,11 @@ nodes {
 nodes {
   position {
     x: 296.0
-    y: 50.0
+    y: 148.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 100.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "2025"

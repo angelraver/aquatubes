@@ -19,8 +19,8 @@ function calculate_iso_height_rounded(tile_width)
 	return math.floor(exact_height + 0.5)
 end
 
-C.SCREEN_WIDTH = 640
-C.SCREEN_HEIGHT = 780
+C.SCREEN_WIDTH = 600
+C.SCREEN_HEIGHT = 900
 
 C.GRID_WIDTH = 9
 C.GRID_HEIGHT = 9
@@ -31,7 +31,7 @@ C.GRID_HEIGHT_EDIT = 20
 C.TILE_WIDTH = 105
 C.TILE_HEIGHT = calculate_iso_height_rounded(C.TILE_WIDTH)
 
-C.VERTICAL_OFFSET = -100
+C.VERTICAL_OFFSET = 0
 C.HORIZONTAL_OFFSET = 30
 
 local grid_center_y_offset = (C.GRID_HEIGHT - 1) * (C.TILE_HEIGHT / 2)

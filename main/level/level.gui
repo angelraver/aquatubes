@@ -17,6 +17,10 @@ nodes {
     y: 374.0
     z: 1.0
   }
+  scale {
+    x: 1.5
+    y: 1.5
+  }
   type: TYPE_BOX
   texture: "ui/next"
   id: "button_next"

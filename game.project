@@ -6,7 +6,7 @@ shared_state = 1
 
 [display]
 width = 600
-height = 780
+height = 900
 high_dpi = 1
 resizable = 0
 fullscreen = 0
