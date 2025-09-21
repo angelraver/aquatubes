@@ -4,7 +4,7 @@ instances {
   prototype: "/main/sprites/scenario/tank_soil.go"
   position {
     x: 220.0
-    y: 155.0
+    y: 226.0
     z: -0.87
   }
 }
@@ -13,7 +13,7 @@ instances {
   prototype: "/main/sprites/scenario/background.go"
   position {
     x: 320.0
-    y: 537.0
+    y: 600.0
     z: -0.88
   }
 }
@@ -22,7 +22,7 @@ instances {
   prototype: "/main/sprites/scenario/front_forest.go"
   position {
     x: 376.0
-    y: 100.0
+    y: 152.0
     z: 0.991
   }
 }
@@ -31,7 +31,7 @@ instances {
   prototype: "/main/sprites/scenario/soil.go"
   position {
     x: 320.0
-    y: 316.0
+    y: 474.0
     z: -0.87
   }
 }
@@ -39,8 +39,8 @@ instances {
   id: "tank"
   prototype: "/main/sprites/scenario/tank.go"
   position {
-    x: 82.0
-    y: 220.0
+    x: 89.0
+    y: 288.0
     z: 0.989
   }
 }

@@ -37,7 +37,7 @@ end
 local function show_ui(self)
 	local left_margin = 40
 	local right_margin = C.SCREEN_WIDTH - 40
-	local top_margin = C.SCREEN_HEIGHT - 40
+	local top_margin = C.SCREEN_HEIGHT + 50
 	gui.set_position(self.sound_button, vmath.vector3(left_margin, top_margin, 0))
 	gui.set_position(self.button_x, vmath.vector3(right_margin, top_margin, 0))
 end
@@ -47,12 +47,12 @@ local function animate_level_label(self)
 
 	local hold_duration = 3
 	local animation_duration = 0.5
-	local final_scale_percent = 1
-	local top_margin = 40 -- en píxeles
+	local final_scale_percent = 2
+	local top_margin = 50 -- en píxeles
 	-- LÓGICA DE LA ANIMACIÓN
 	-- Calcular la posición y escala finales ---
 	local target_x = (C.SCREEN_WIDTH / 2) - (gui.get_size(self.level_label).x / 8)
-	local target_y = C.SCREEN_HEIGHT - top_margin
+	local target_y = C.SCREEN_HEIGHT + top_margin
 	-- Creamos los vectores para la animación
 	local target_position = vmath.vector3(target_x, target_y, 0)
 	local target_scale = vmath.vector3(final_scale_percent, final_scale_percent, 1)
