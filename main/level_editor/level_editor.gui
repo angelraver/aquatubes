@@ -10,7 +10,7 @@ textures {
 nodes {
   position {
     x: 34.0
-    y: 129.0
+    y: 280.0
   }
   type: TYPE_BOX
   texture: "ui/menu"
@@ -20,8 +20,8 @@ nodes {
 }
 nodes {
   position {
-    x: 581.0
-    y: 55.0
+    x: 580.0
+    y: 203.0
   }
   scale {
     x: 0.75
@@ -48,7 +48,7 @@ nodes {
 nodes {
   position {
     x: 580.0
-    y: 92.0
+    y: 242.0
   }
   scale {
     x: 0.75
@@ -75,7 +75,7 @@ nodes {
 nodes {
   position {
     x: 505.0
-    y: 129.0
+    y: 280.0
   }
   scale {
     x: 0.75
@@ -101,8 +101,8 @@ nodes {
 }
 nodes {
   position {
-    x: 581.0
-    y: 129.0
+    x: 580.0
+    y: 280.0
   }
   scale {
     x: 0.75
@@ -129,7 +129,7 @@ nodes {
 nodes {
   position {
     x: 543.0
-    y: 92.0
+    y: 242.0
   }
   scale {
     x: 0.75
@@ -156,7 +156,7 @@ nodes {
 nodes {
   position {
     x: 543.0
-    y: 55.0
+    y: 203.0
   }
   scale {
     x: 0.75
@@ -183,7 +183,7 @@ nodes {
 nodes {
   position {
     x: 430.0
-    y: 55.0
+    y: 203.0
   }
   scale {
     x: 0.75
@@ -210,7 +210,7 @@ nodes {
 nodes {
   position {
     x: 317.0
-    y: 18.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -237,7 +237,7 @@ nodes {
 nodes {
   position {
     x: 355.0
-    y: 18.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -264,7 +264,7 @@ nodes {
 nodes {
   position {
     x: 543.0
-    y: 129.0
+    y: 280.0
   }
   scale {
     x: 0.75
@@ -291,7 +291,7 @@ nodes {
 nodes {
   position {
     x: 467.0
-    y: 55.0
+    y: 203.0
   }
   scale {
     x: 0.75
@@ -318,7 +318,7 @@ nodes {
 nodes {
   position {
     x: 468.0
-    y: 92.0
+    y: 242.0
   }
   scale {
     x: 0.75
@@ -345,7 +345,7 @@ nodes {
 nodes {
   position {
     x: 505.0
-    y: 92.0
+    y: 242.0
   }
   scale {
     x: 0.75
@@ -372,7 +372,7 @@ nodes {
 nodes {
   position {
     x: 505.0
-    y: 55.0
+    y: 203.0
   }
   scale {
     x: 0.75
@@ -399,7 +399,7 @@ nodes {
 nodes {
   position {
     x: 392.0
-    y: 18.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -426,7 +426,7 @@ nodes {
 nodes {
   position {
     x: 34.0
-    y: 74.0
+    y: 223.0
   }
   size {
     x: 50.0
@@ -439,9 +439,6 @@ nodes {
   visible: false
 }
 nodes {
-  position {
-    y: 3.0
-  }
   type: TYPE_PIE
   texture: "ui/sound_on"
   id: "sound_pie"
@@ -453,7 +450,7 @@ nodes {
 nodes {
   position {
     x: 20.0
-    y: 19.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -480,7 +477,7 @@ nodes {
 nodes {
   position {
     x: 60.0
-    y: 19.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -510,7 +507,7 @@ nodes {
 nodes {
   position {
     x: 99.0
-    y: 19.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -537,7 +534,7 @@ nodes {
 nodes {
   position {
     x: 138.0
-    y: 19.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -564,7 +561,7 @@ nodes {
 nodes {
   position {
     x: 177.0
-    y: 19.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -591,7 +588,7 @@ nodes {
 nodes {
   position {
     x: 216.0
-    y: 19.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -618,7 +615,7 @@ nodes {
 nodes {
   position {
     x: 505.0
-    y: 18.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -645,7 +642,7 @@ nodes {
 nodes {
   position {
     x: 430.0
-    y: 18.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -672,7 +669,7 @@ nodes {
 nodes {
   position {
     x: 467.0
-    y: 18.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -698,8 +695,8 @@ nodes {
 }
 nodes {
   position {
-    x: 581.0
-    y: 18.0
+    x: 580.0
+    y: 165.0
   }
   scale {
     x: 0.75
@@ -726,7 +723,7 @@ nodes {
 nodes {
   position {
     x: 543.0
-    y: 18.0
+    y: 165.0
   }
   scale {
     x: 0.75

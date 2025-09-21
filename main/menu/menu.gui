@@ -33,7 +33,7 @@ nodes {
 nodes {
   position {
     x: 298.0
-    y: 177.0
+    y: 407.0
   }
   size {
     x: 50.0
@@ -45,9 +45,6 @@ nodes {
   visible: false
 }
 nodes {
-  position {
-    y: 223.0
-  }
   type: TYPE_PIE
   texture: "ui/sound_on"
   id: "sound_pie"
