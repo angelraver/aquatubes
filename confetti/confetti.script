@@ -1,0 +1,26 @@
+local function single_shot()
+	particlefx.play("#particles")
+end
+
+function pow()
+  local my_timer = nil
+  local elapsed_time = 0
+  local interval = 0.3
+  local duration = 0.9
+	single_shot()
+  local function repeating_action()
+    elapsed_time = elapsed_time + interval
+    single_shot()
+    if elapsed_time >= duration then
+      timer.cancel(my_timer)
+    end
+  end
+
+  my_timer = timer.delay(interval, true, repeating_action)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("pow") then
+		pow()
+	end
+end

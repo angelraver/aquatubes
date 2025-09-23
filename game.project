@@ -39,3 +39,7 @@ max_count = 1000
 [ios]
 bundle_identifier = angelraver.test
 
+[particle_fx]
+max_count = 1024
+max_emitter_count = 1024
+

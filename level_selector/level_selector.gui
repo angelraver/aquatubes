@@ -1,0 +1,62 @@
+script: "/level_selector/level_selector.gui_script"
+fonts {
+  name: "arcade"
+  font: "/assets/fonts/arcade.font"
+}
+textures {
+  name: "ui"
+  texture: "/sprites/ui.atlas"
+}
+nodes {
+  position {
+    x: -200.0
+    y: -200.0
+  }
+  size {
+    x: 75.0
+    y: 75.0
+  }
+  type: TYPE_BOX
+  texture: "ui/level"
+  id: "level_button_template"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "arcade"
+  id: "level_number"
+  parent: "level_button_template"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -100.0
+    y: -200.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "ui/world"
+  id: "world_button_template"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "<text>"
+  font: "arcade"
+  id: "world_number"
+  parent: "world_button_template"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
