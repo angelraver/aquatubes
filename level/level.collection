@@ -1,47 +1,19 @@
 name: "level"
 instances {
-  id: "tank_soil"
-  prototype: "/sprites/scenario/tank_soil.go"
+  id: "tank"
+  prototype: "/sprites/scenario/tank.go"
   position {
-    x: 220.0
-    y: 226.0
-    z: -0.87
+    x: 89.0
+    y: 208.0
+    z: 0.989
   }
 }
 instances {
   id: "background"
   prototype: "/sprites/scenario/background.go"
   position {
-    x: 320.0
-    y: 600.0
-    z: -0.88
-  }
-}
-instances {
-  id: "front_forest"
-  prototype: "/sprites/scenario/front_forest.go"
-  position {
-    x: 376.0
-    y: 152.0
-    z: 0.991
-  }
-}
-instances {
-  id: "soil"
-  prototype: "/sprites/scenario/soil.go"
-  position {
-    x: 320.0
-    y: 474.0
-    z: -0.87
-  }
-}
-instances {
-  id: "tank"
-  prototype: "/sprites/scenario/tank.go"
-  position {
-    x: 89.0
-    y: 288.0
-    z: 0.989
+    x: 300.0
+    y: 272.0
   }
 }
 scale_along_z: 0
@@ -307,10 +279,7 @@ embedded_instances {
 embedded_instances {
   id: "scenario"
   children: "background"
-  children: "front_forest"
-  children: "soil"
   children: "tank"
-  children: "tank_soil"
   data: ""
 }
 embedded_instances {

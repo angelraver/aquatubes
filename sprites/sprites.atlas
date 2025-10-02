@@ -8,13 +8,7 @@ images {
   image: "/assets/img/done.png"
 }
 images {
-  image: "/assets/img/background.png"
-}
-images {
   image: "/assets/img/front_forest.png"
-}
-images {
-  image: "/assets/img/soil.png"
 }
 images {
   image: "/assets/img/tank_soil.png"
@@ -126,5 +120,8 @@ images {
 }
 images {
   image: "/assets/img/logo.png"
+}
+images {
+  image: "/assets/img/background.png"
 }
 extrude_borders: 2

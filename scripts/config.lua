@@ -31,7 +31,7 @@ C.GRID_HEIGHT_EDIT = 20
 C.TILE_WIDTH = 100
 C.TILE_HEIGHT = calculate_iso_height_rounded(C.TILE_WIDTH)
 
-C.VERTICAL_OFFSET = 0
+C.VERTICAL_OFFSET = -80
 C.HORIZONTAL_OFFSET = 50
 
 local grid_center_y_offset = (C.GRID_HEIGHT - 1) * (C.TILE_HEIGHT / 2)

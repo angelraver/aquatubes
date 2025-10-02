@@ -86,7 +86,7 @@ function init(self)
 	self.button_x = gui.get_node("button_x")
 	self.win_message = gui.get_node("win_message")
 	self.level_label = gui.get_node("level_label")
-	show_ui(self)
+	--show_ui(self)
 	animate_level_label(self)
 	show_win_message(self, false)
 	local texture = M.sound_on and "sound_on" or "sound_off"

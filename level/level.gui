@@ -41,13 +41,16 @@ nodes {
 }
 nodes {
   position {
-    x: 564.0
-    y: 745.0
+    x: 590.0
+    y: 890.0
     z: 1.0
   }
   type: TYPE_BOX
   texture: "ui/x"
   id: "button_x"
+  xanchor: XANCHOR_RIGHT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NE
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -73,8 +76,8 @@ nodes {
 }
 nodes {
   position {
-    x: 35.0
-    y: 745.0
+    x: 10.0
+    y: 890.0
   }
   size {
     x: 50.0
@@ -82,6 +85,9 @@ nodes {
   }
   type: TYPE_BOX
   id: "sound_button"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NW
   inherit_alpha: true
   visible: false
 }
@@ -89,6 +95,9 @@ nodes {
   type: TYPE_PIE
   texture: "ui/sound_on"
   id: "sound_pie"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_NW
   parent: "sound_button"
   inherit_alpha: true
   outerBounds: PIEBOUNDS_RECTANGLE
