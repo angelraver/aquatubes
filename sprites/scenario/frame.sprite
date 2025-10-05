@@ -1,0 +1,6 @@
+default_animation: "frame_back"
+material: "/builtins/materials/sprite.material"
+textures {
+  sampler: "texture_sampler"
+  texture: "/sprites/sprites.atlas"
+}

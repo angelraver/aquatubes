@@ -270,6 +270,7 @@ embedded_instances {
 embedded_instances {
   id: "scenario"
   children: "background"
+  children: "current_pipe"
   data: ""
 }
 embedded_instances {
@@ -294,5 +295,36 @@ embedded_instances {
   position {
     x: 288.0
     y: 342.0
+  }
+}
+embedded_instances {
+  id: "current_pipe"
+  data: "embedded_components {\n"
+  "  id: \"frame_back\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"frame_back\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/sprites/sprites.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"frame_front\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"default_animation: \\\"frame_front\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "textures {\\n"
+  "  sampler: \\\"texture_sampler\\\"\\n"
+  "  texture: \\\"/sprites/sprites.atlas\\\"\\n"
+  "}\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    x: 300.0
+    y: 788.0
+    z: 1.0
   }
 }

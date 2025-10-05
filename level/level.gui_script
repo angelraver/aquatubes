@@ -40,11 +40,11 @@ local function animate_level_label(self)
 	local hold_duration = 3
 	local animation_duration = 0.5
 	local final_scale_percent = 2
-	local top_margin = 50 -- en píxeles
+	local top_margin = 30 -- en píxeles
 	-- LÓGICA DE LA ANIMACIÓN
 	-- Calcular la posición y escala finales ---
-	local target_x = (C.SCREEN_WIDTH / 2) - (gui.get_size(self.level_label).x / 8)
-	local target_y = C.SCREEN_HEIGHT + top_margin
+	local target_x = (C.SCREEN_WIDTH / 2) -- (gui.get_size(self.level_label).x / 2)
+	local target_y = C.SCREEN_HEIGHT - top_margin
 	-- Creamos los vectores para la animación
 	local target_position = vmath.vector3(target_x, target_y, 0)
 	local target_scale = vmath.vector3(final_scale_percent, final_scale_percent, 1)

@@ -124,4 +124,10 @@ images {
 images {
   image: "/assets/img/background.png"
 }
+images {
+  image: "/assets/img/frame_back.png"
+}
+images {
+  image: "/assets/img/frame_front.png"
+}
 extrude_borders: 2
