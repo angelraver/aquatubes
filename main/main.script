@@ -12,7 +12,7 @@ local function theme_stop()
 end
 
 local function theme_play()
-	sound.play("#theme", nil, function() end)-- El "nil, function()" es para que no nos devuelva un mensaje cuando termine, ya que está en bucle y nunca terminará.
+	--sound.play("#theme", nil, function() end)-- El "nil, function()" es para que no nos devuelva un mensaje cuando termine, ya que está en bucle y nunca terminará.
 end
 
 local function sound_toggle()
@@ -41,7 +41,7 @@ function on_message(self, message_id, message, sender)
 	end
 
 	if message_id == hash("change_scene") and message.scene then
-		sound.play("#enter")
+		--sound.play("#enter")
 		switch_to_scene(message.scene)
 	end
 

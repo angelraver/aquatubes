@@ -1,14 +1,5 @@
 name: "level"
 instances {
-  id: "tank"
-  prototype: "/sprites/scenario/tank.go"
-  position {
-    x: 89.0
-    y: 208.0
-    z: 0.989
-  }
-}
-instances {
   id: "background"
   prototype: "/sprites/scenario/background.go"
   position {
@@ -279,7 +270,6 @@ embedded_instances {
 embedded_instances {
   id: "scenario"
   children: "background"
-  children: "tank"
   data: ""
 }
 embedded_instances {

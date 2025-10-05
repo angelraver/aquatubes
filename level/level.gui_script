@@ -2,7 +2,7 @@ local M = require("scripts.manager")
 local C = require("scripts.config")
 
 local function theme_play()
-    sound.play("/sound_controller#theme")
+    --sound.play("/sound_controller#theme")
 end
 
 local function theme_stop()
@@ -32,14 +32,6 @@ local function show_win_message(self, show)
 		gui.set_position(self.button_next, vmath.vector3(-1000, -1000, 0))
 		gui.set_position(self.win_message, vmath.vector3(-1000, -1000, 0))
 	end
-end
-
-local function show_ui(self)
-	local left_margin = 40
-	local right_margin = C.SCREEN_WIDTH - 40
-	local top_margin = C.SCREEN_HEIGHT + 50
-	gui.set_position(self.sound_button, vmath.vector3(left_margin, top_margin, 0))
-	gui.set_position(self.button_x, vmath.vector3(right_margin, top_margin, 0))
 end
 
 local function animate_level_label(self)

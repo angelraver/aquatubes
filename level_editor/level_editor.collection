@@ -1,13 +1,4 @@
 name: "level_editor"
-instances {
-  id: "tank"
-  prototype: "/sprites/scenario/tank.go"
-  position {
-    x: 82.0
-    y: 120.0
-    z: 1.0
-  }
-}
 scale_along_z: 0
 embedded_instances {
   id: "game_controller"
@@ -234,4 +225,7 @@ embedded_instances {
   "  component: \"/level_editor/level_editor.gui\"\n"
   "}\n"
   ""
+  position {
+    y: -128.0
+  }
 }

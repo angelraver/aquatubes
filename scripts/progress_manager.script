@@ -3,9 +3,9 @@ local M = require("scripts.manager")
 local SAVE_FILE = "aquatubes.dat"
 
 local function save_progress(data)
-    --print("saving...")
+    print("saving...")
     local success = sys.save(SAVE_FILE, data)
-    -- pprint(data)
+    pprint(data)
     return success
 end
 
@@ -36,13 +36,14 @@ local function level_completed()
 end
 
 function init(self)
-    -- save_progress({ world = 1, level = 19})
+    --save_progress({ world = 0, level = 18 })
+    print("init progress manager")
     load_progress()
 end
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("level_completed") then
-        --print("progress manager")
+        print("progress manager")
         level_completed()
         load_progress()
     end

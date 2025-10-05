@@ -10,7 +10,7 @@ textures {
 nodes {
   position {
     x: 34.0
-    y: 280.0
+    y: 182.0
   }
   type: TYPE_BOX
   texture: "ui/menu"
@@ -21,7 +21,7 @@ nodes {
 nodes {
   position {
     x: 580.0
-    y: 203.0
+    y: 105.0
   }
   scale {
     x: 0.75
@@ -35,8 +35,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "12"
@@ -48,7 +48,7 @@ nodes {
 nodes {
   position {
     x: 580.0
-    y: 242.0
+    y: 144.0
   }
   scale {
     x: 0.75
@@ -62,8 +62,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "7"
@@ -75,7 +75,7 @@ nodes {
 nodes {
   position {
     x: 505.0
-    y: 280.0
+    y: 182.0
   }
   scale {
     x: 0.75
@@ -89,8 +89,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "1"
@@ -102,7 +102,7 @@ nodes {
 nodes {
   position {
     x: 580.0
-    y: 280.0
+    y: 182.0
   }
   scale {
     x: 0.75
@@ -116,8 +116,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "3"
@@ -129,7 +129,7 @@ nodes {
 nodes {
   position {
     x: 543.0
-    y: 242.0
+    y: 144.0
   }
   scale {
     x: 0.75
@@ -143,8 +143,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "6"
@@ -156,7 +156,7 @@ nodes {
 nodes {
   position {
     x: 543.0
-    y: 203.0
+    y: 105.0
   }
   scale {
     x: 0.75
@@ -170,8 +170,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "11"
@@ -183,7 +183,7 @@ nodes {
 nodes {
   position {
     x: 430.0
-    y: 203.0
+    y: 105.0
   }
   scale {
     x: 0.75
@@ -197,8 +197,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "8"
@@ -210,7 +210,7 @@ nodes {
 nodes {
   position {
     x: 317.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -224,8 +224,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "13"
@@ -237,7 +237,7 @@ nodes {
 nodes {
   position {
     x: 355.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -251,8 +251,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "14"
@@ -264,7 +264,7 @@ nodes {
 nodes {
   position {
     x: 543.0
-    y: 280.0
+    y: 182.0
   }
   scale {
     x: 0.75
@@ -278,8 +278,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "2"
@@ -291,7 +291,7 @@ nodes {
 nodes {
   position {
     x: 467.0
-    y: 203.0
+    y: 105.0
   }
   scale {
     x: 0.75
@@ -305,8 +305,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "9"
@@ -318,7 +318,7 @@ nodes {
 nodes {
   position {
     x: 468.0
-    y: 242.0
+    y: 144.0
   }
   scale {
     x: 0.75
@@ -332,8 +332,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "4"
@@ -345,7 +345,7 @@ nodes {
 nodes {
   position {
     x: 505.0
-    y: 242.0
+    y: 144.0
   }
   scale {
     x: 0.75
@@ -359,8 +359,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "5"
@@ -372,7 +372,7 @@ nodes {
 nodes {
   position {
     x: 505.0
-    y: 203.0
+    y: 105.0
   }
   scale {
     x: 0.75
@@ -386,8 +386,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "10"
@@ -399,7 +399,7 @@ nodes {
 nodes {
   position {
     x: 392.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -413,8 +413,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "15"
@@ -426,7 +426,6 @@ nodes {
 nodes {
   position {
     x: 34.0
-    y: 223.0
   }
   size {
     x: 50.0
@@ -439,6 +438,9 @@ nodes {
   visible: false
 }
 nodes {
+  position {
+    y: 124.0
+  }
   type: TYPE_PIE
   texture: "ui/sound_on"
   id: "sound_pie"
@@ -450,7 +452,7 @@ nodes {
 nodes {
   position {
     x: 20.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -464,8 +466,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "1"
@@ -477,7 +479,7 @@ nodes {
 nodes {
   position {
     x: 60.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -494,8 +496,8 @@ nodes {
     y: 1.333333
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "2"
@@ -507,7 +509,7 @@ nodes {
 nodes {
   position {
     x: 99.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -521,8 +523,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "3"
@@ -534,7 +536,7 @@ nodes {
 nodes {
   position {
     x: 138.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -548,8 +550,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "4"
@@ -561,7 +563,7 @@ nodes {
 nodes {
   position {
     x: 177.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -575,8 +577,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "5"
@@ -588,7 +590,7 @@ nodes {
 nodes {
   position {
     x: 216.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -602,8 +604,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "6"
@@ -615,7 +617,7 @@ nodes {
 nodes {
   position {
     x: 505.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -629,8 +631,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "18"
@@ -642,7 +644,7 @@ nodes {
 nodes {
   position {
     x: 430.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -656,8 +658,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "16"
@@ -669,7 +671,7 @@ nodes {
 nodes {
   position {
     x: 467.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -683,8 +685,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "17"
@@ -696,7 +698,7 @@ nodes {
 nodes {
   position {
     x: 580.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -710,8 +712,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "20"
@@ -723,7 +725,7 @@ nodes {
 nodes {
   position {
     x: 543.0
-    y: 165.0
+    y: 67.0
   }
   scale {
     x: 0.75
@@ -737,8 +739,8 @@ nodes {
 }
 nodes {
   size {
-    x: 200.0
-    y: 100.0
+    x: 50.0
+    y: 50.0
   }
   type: TYPE_TEXT
   text: "19"
