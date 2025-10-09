@@ -12,4 +12,18 @@ M.SCENES = {
 }
 M.current_scene = M.SCENES.MENU
 
-return M
+--[[
+	NUEVA ESTRUCTURA DE PROGRESO:
+	Esta tabla guardará todo el progreso del jugador.
+	La clave de la tabla 'worlds' será el número del mundo, y su valor,
+	el número de niveles completados en ese mundo.
+	Ejemplo: { worlds = { [1] = 20, [2] = 5 } }
+	Significa:
+	- Mundo 1: 20 niveles completados (mundo terminado).
+	- Mundo 2: 5 niveles completados.
+	]]
+	M.progress = {
+		worlds = {}
+	}
+
+	return M

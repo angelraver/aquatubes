@@ -2,49 +2,65 @@ local C = require("scripts.config")
 local M = require("scripts.manager")
 local SAVE_FILE = "aquatubes.dat"
 
-local function save_progress(data)
-    print("saving...")
-    local success = sys.save(SAVE_FILE, data)
-    pprint(data)
-    return success
+local function save_progress()
+    print("Saving progress...")
+    pprint(M.progress)
+    sys.save(SAVE_FILE, M.progress)
 end
 
 local function load_progress()
+    print("Loading progress...")
     local data = sys.load(SAVE_FILE)
-    if data.world == nil then
-        M.completed_worlds = 1
-        M.completed_levels = 1
+
+    -- Si no hay datos guardados o la estructura es antigua, creamos un progreso inicial.
+    if data and data.worlds then
+        M.progress = data
     else
-        M.completed_worlds = data.world
-        M.completed_levels = data.level
+        -- Estado inicial del juego: Mundo 1 desbloqueado con 0 niveles completados.
+        -- El nivel 1 del mundo 1 estará disponible por defecto.
+        M.progress = {
+            worlds = { [1] = 0 }
+        }
     end
-    --print("DATA LOADED " .. M.completed_worlds, M.completed_levels)
+    pprint(M.progress)
 end
 
+-- Lógica mejorada para completar un nivel
 local function level_completed()
-    --print(".........progress manager level completed")
-    --print(M.current_level, "==",C.LEVEL_COUNT, "and", M.current_world, "==", M.completed_worlds + 1)
-    --print(M.current_world, ">", M.completed_worlds, "and", M.current_level, ">", M.completed_levels)
-    --print(".......................")
-    if M.current_level == C.LEVEL_COUNT and M.current_world == M.completed_worlds + 1 then
-        --print("save 1")
-        save_progress({ world = M.current_world, level = M.current_level })
-    elseif M.current_world > M.completed_worlds and M.current_level > M.completed_levels then
-        --print("save 2")
-        save_progress({ world = M.completed_worlds, level = M.current_level })
+    local world = M.current_world
+    local level = M.current_level
+
+    -- Obtenemos los niveles ya completados en este mundo (o 0 si es la primera vez)
+    local completed_in_world = M.progress.worlds[world] or 0
+
+    -- Solo guardamos el progreso si este nivel es nuevo
+    if level > completed_in_world then
+        print("New progress detected in World " .. world .. "! Level " .. level .. " completed.")
+        M.progress.worlds[world] = level
+
+        -- Si se completó el último nivel del mundo, desbloqueamos el siguiente mundo
+        if level == C.LEVEL_COUNT and world < C.WORLD_COUNT then
+            -- Verificamos que el siguiente mundo no esté ya desbloqueado
+            if not M.progress.worlds[world + 1] then
+                 print("World " .. world .. " completed! Unlocking World " .. (world + 1))
+                -- Lo desbloqueamos poniendo 0 niveles completados
+                M.progress.worlds[world + 1] = 0
+            end
+        end
+
+        save_progress()
+    else
+        print("Level " .. level .. " of World " .. world .. " re-played. No new progress to save.")
     end
 end
 
 function init(self)
-    --save_progress({ world = 0, level = 18 })
-    print("init progress manager")
     load_progress()
 end
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("level_completed") then
-        print("progress manager")
         level_completed()
-        load_progress()
+        -- Ya no es necesario llamar a load_progress() aquí. El estado en M ya está actualizado.
     end
 end
