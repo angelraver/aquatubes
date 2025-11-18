@@ -3,13 +3,13 @@ local M = require("scripts.manager")
 local SAVE_FILE = "aquatubes.dat"
 
 local function save_progress()
-    print("Saving progress...")
-    pprint(M.progress)
+    --print("Saving progress...")
+    --pprint(M.progress)
     sys.save(SAVE_FILE, M.progress)
 end
 
 local function load_progress()
-    print("Loading progress...")
+    --print("Loading progress...")
     local data = sys.load(SAVE_FILE)
 
     -- Si no hay datos guardados o la estructura es antigua, creamos un progreso inicial.
@@ -22,7 +22,7 @@ local function load_progress()
             worlds = { [1] = 0 }
         }
     end
-    pprint(M.progress)
+    --pprint(M.progress)
 end
 
 -- Lógica mejorada para completar un nivel
@@ -35,14 +35,14 @@ local function level_completed()
 
     -- Solo guardamos el progreso si este nivel es nuevo
     if level > completed_in_world then
-        print("New progress detected in World " .. world .. "! Level " .. level .. " completed.")
+        --print("New progress detected in World " .. world .. "! Level " .. level .. " completed.")
         M.progress.worlds[world] = level
 
         -- Si se completó el último nivel del mundo, desbloqueamos el siguiente mundo
         if level == C.LEVEL_COUNT and world < C.WORLD_COUNT then
             -- Verificamos que el siguiente mundo no esté ya desbloqueado
             if not M.progress.worlds[world + 1] then
-                 print("World " .. world .. " completed! Unlocking World " .. (world + 1))
+                 --print("World " .. world .. " completed! Unlocking World " .. (world + 1))
                 -- Lo desbloqueamos poniendo 0 niveles completados
                 M.progress.worlds[world + 1] = 0
             end
@@ -50,7 +50,7 @@ local function level_completed()
 
         save_progress()
     else
-        print("Level " .. level .. " of World " .. world .. " re-played. No new progress to save.")
+        --print("Level " .. level .. " of World " .. world .. " re-played. No new progress to save.")
     end
 end
 

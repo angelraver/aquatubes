@@ -7,6 +7,36 @@ instances {
     y: 272.0
   }
 }
+instances {
+  id: "foreground"
+  prototype: "/sprites/scenario/foreground.go"
+  position {
+    x: 299.0
+    y: 319.0
+    z: 0.99
+  }
+}
+instances {
+  id: "tanque"
+  prototype: "/sprites/scenario/tanque.go"
+  position {
+    x: 111.0
+    y: 164.0
+    z: 0.99
+  }
+}
+instances {
+  id: "tanque1"
+  prototype: "/sprites/scenario/tanque.go"
+  position {
+    x: 478.0
+    y: 148.0
+    z: 0.99
+  }
+  scale3 {
+    x: -1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "game_controller"
@@ -271,6 +301,9 @@ embedded_instances {
   id: "scenario"
   children: "background"
   children: "current_pipe"
+  children: "foreground"
+  children: "tanque"
+  children: "tanque1"
   data: ""
 }
 embedded_instances {

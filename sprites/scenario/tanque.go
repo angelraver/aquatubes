@@ -1,7 +1,7 @@
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"tank_soil\"\n"
+  data: "default_animation: \"tanque\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"
