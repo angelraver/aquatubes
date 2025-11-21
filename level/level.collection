@@ -22,7 +22,7 @@ instances {
   position {
     x: 114.0
     y: 168.0
-    z: 0.99
+    z: 1.0
   }
 }
 instances {
@@ -31,7 +31,7 @@ instances {
   position {
     x: 482.0
     y: 168.0
-    z: 0.99
+    z: 1.0
   }
   scale3 {
     x: -1.0

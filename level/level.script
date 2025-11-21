@@ -19,6 +19,33 @@ function init(self)
   self.selected_display_pos = vmath.vector3(C.SCREEN_WIDTH / 2, C.SCREEN_HEIGHT - 115, 1)
 
   go.set("/current_pipe#frame_back", "tint", vmath.vector4(1, 1, 1, .5))
+  
+  -- Hide both tanks by default
+  go.set("/tanque_izq#sprite", "tint.w", 0)
+  go.set("/tanque_der#sprite", "tint.w", 0)
+  
+  -- Check level grid for pipes at specific positions
+  local show_tanque_izq = false
+  local show_tanque_der = false
+  
+  for _, pipe in ipairs(self.level_grid) do
+    -- Check for pipe at x=0, y=2 (show tanque_izq)
+    if pipe.x == 0 and pipe.y == 2 then
+      show_tanque_izq = true
+    end
+    -- Check for pipe at x=2, y=0 (show tanque_der)
+    if pipe.x == 2 and pipe.y == 0 then
+      show_tanque_der = true
+    end
+  end
+  
+  -- Show tanks if conditions are met
+  if show_tanque_izq then
+    go.set("/tanque_izq#sprite", "tint.w", 1)
+  end
+  if show_tanque_der then
+    go.set("/tanque_der#sprite", "tint.w", 1)
+  end
 end
 
 function on_input(self, action_id, action)
