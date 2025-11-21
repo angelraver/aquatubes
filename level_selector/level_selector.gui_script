@@ -150,9 +150,9 @@ function on_input(self, action_id, action)
                     -- Refrescamos ambas grillas al cambiar de mundo
                     refresh_world_grid(self)
                     refresh_level_grid(self)
-                    --sound.play("main:/main#enter")
+                    sound.play("main:/main#enter")
                 else
-                    --sound.play("main:/main#blocked")
+                    sound.play("main:/main#blocked")
                 end
                 return true
             end
@@ -163,9 +163,9 @@ function on_input(self, action_id, action)
                 if level_button.open then
                     M.current_level = level_button.level
                     msg.post("main:/main", "change_scene", { scene = M.SCENES.LEVEL })
-                    --sound.play("main:/main#enter")
+                    sound.play("main:/main#enter")
                 else
-                    --sound.play("main:/main#blocked")
+                    sound.play("main:/main#blocked")
                 end
                 return true
             end

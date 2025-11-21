@@ -215,7 +215,7 @@ function B.bounce_pipe(t, iso_x, iso_y, delay)
 	local bounce_speed = 0.2  -- Duración de cada fase del rebote
 	go.animate(pipe_id, "position.y", go.PLAYBACK_ONCE_FORWARD, final_pos.y, go.EASING_INEXPO, fall_duration, delay,
 		function()
-			--sound.play("/sound_controller#clac_1")
+			sound.play("/sound_controller#clac_1")
 			go.animate(pipe_id, "position.y", go.PLAYBACK_ONCE_FORWARD, final_pos.y - bounce_height, go.EASING_OUTSINE, bounce_speed, 0,
 				function()
 					go.animate(pipe_id, "position.y", go.PLAYBACK_ONCE_FORWARD, final_pos.y + bounce_height / 3, go.EASING_INOUTSINE, bounce_speed * 1.5, 0,

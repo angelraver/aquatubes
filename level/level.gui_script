@@ -2,7 +2,7 @@ local M = require("scripts.manager")
 local C = require("scripts.config")
 
 local function theme_play()
-    --sound.play("/sound_controller#theme")
+  sound.play("/sound_controller#theme")
 end
 
 local function theme_stop()

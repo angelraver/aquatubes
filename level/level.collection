@@ -17,20 +17,20 @@ instances {
   }
 }
 instances {
-  id: "tanque"
+  id: "tanque_izq"
   prototype: "/sprites/scenario/tanque.go"
   position {
-    x: 111.0
-    y: 164.0
+    x: 114.0
+    y: 168.0
     z: 0.99
   }
 }
 instances {
-  id: "tanque1"
+  id: "tanque_der"
   prototype: "/sprites/scenario/tanque.go"
   position {
-    x: 478.0
-    y: 148.0
+    x: 482.0
+    y: 168.0
     z: 0.99
   }
   scale3 {
@@ -302,8 +302,8 @@ embedded_instances {
   children: "background"
   children: "current_pipe"
   children: "foreground"
-  children: "tanque"
-  children: "tanque1"
+  children: "tanque_der"
+  children: "tanque_izq"
   data: ""
 }
 embedded_instances {
