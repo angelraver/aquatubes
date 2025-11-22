@@ -192,7 +192,6 @@ end
 function B.place_pipe(t, iso_x, iso_y)
 	local z = B.get_z_for_cell(iso_x, iso_y)
 	local world_pos_with_z = B.iso_to_world(iso_x, iso_y, z)
-	print(iso_x, iso_y, z)
 	local pipe_id = factory.create("#pipe_" .. t .. "_factory", world_pos_with_z)
 	local cell_to_save = {
 		id = pipe_id,
