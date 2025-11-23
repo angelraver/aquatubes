@@ -425,32 +425,6 @@ nodes {
 }
 nodes {
   position {
-    x: 34.0
-  }
-  size {
-    x: 50.0
-    y: 50.0
-  }
-  type: TYPE_BOX
-  id: "sound_button"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-  visible: false
-}
-nodes {
-  position {
-    y: 124.0
-  }
-  type: TYPE_PIE
-  texture: "ui/sound_on"
-  id: "sound_pie"
-  parent: "sound_button"
-  inherit_alpha: true
-  outerBounds: PIEBOUNDS_RECTANGLE
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
     x: 20.0
     y: 67.0
   }
