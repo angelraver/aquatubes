@@ -1,5 +1,5 @@
 local M = require "scripts.manager"
-local EDIT_MODE = true
+local EDIT_MODE = false
 
 local function switch_to_scene(new_scene)
 	msg.post("#" .. M.current_scene, "unload")
@@ -12,7 +12,7 @@ local function theme_stop()
 end
 
 local function theme_play()
-	sound.play("#theme", nil, function() end)-- El "nil, function()" es para que no nos devuelva un mensaje cuando termine, ya que está en bucle y nunca terminará.
+	--sound.play("#theme", nil, function() end)-- El "nil, function()" es para que no nos devuelva un mensaje cuando termine, ya que está en bucle y nunca terminará.
 end
 
 local function sound_toggle()

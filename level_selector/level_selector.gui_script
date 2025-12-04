@@ -36,23 +36,35 @@ end
 
 local function refresh_world_grid(self)
     for i, world_button in ipairs(self.world_buttons) do
-        local sprite_name = "world_blocked" -- Por defecto, bloqueado
+        local sprite_name = "world_blocked" -- Default: blocked
         world_button.open = false
         world_button.done = false
 
-        -- ¿El mundo está desbloqueado? (es decir, existe en nuestra tabla de progreso)
-        if M.progress.worlds[world_button.world] ~= nil then
-            sprite_name = "world"
+        -- Check if previous world is completed (to unlock current world)
+        local previous_world_completed = false
+        if world_button.world > 1 then
+            previous_world_completed = M.progress.worlds[world_button.world - 1] == C.LEVEL_COUNT
+        end
+
+        -- 1. World 1 starts as "open", OR world is open if previous world is completed
+        if world_button.world == 1 or previous_world_completed then
+            sprite_name = "world_open"
             world_button.open = true
         end
 
-        -- ¿El mundo está completado? (tiene C.LEVEL_COUNT niveles hechos)
+        -- 2. If world has any progress, it's also open
+        if M.progress.worlds[world_button.world] ~= nil then
+            sprite_name = "world_open"
+            world_button.open = true
+        end
+
+        -- 3. World is completed (has C.LEVEL_COUNT levels done)
         if M.progress.worlds[world_button.world] == C.LEVEL_COUNT then
             sprite_name = "world_done"
             world_button.done = true
         end
 
-        -- ¿Es el mundo actualmente seleccionado?
+        -- 4. Currently selected world (highest priority)
         if world_button.world == M.current_world then
             sprite_name = "world_selected"
         end

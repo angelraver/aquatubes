@@ -26,10 +26,13 @@ images {
   image: "/assets/img/ui/next.png"
 }
 images {
-  image: "/assets/img/ui/world.png"
+  image: "/assets/img/ui/world_open.png"
 }
 images {
   image: "/assets/img/ui/world_blocked.png"
+}
+images {
+  image: "/assets/img/ui/world_done.png"
 }
 images {
   image: "/assets/img/ui/world_selected.png"

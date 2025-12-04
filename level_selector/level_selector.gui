@@ -42,7 +42,7 @@ nodes {
     y: 100.0
   }
   type: TYPE_BOX
-  texture: "ui/world"
+  texture: "ui/world_open"
   id: "world_button_template"
   inherit_alpha: true
 }
