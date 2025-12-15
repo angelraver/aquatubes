@@ -25,17 +25,20 @@ function init(self)
   go.set("/tanque_der#sprite", "tint.w", 0)
   
   -- Check level grid for pipes at specific positions
-  local show_tanque_izq = false
+  local show_tanque_izq = true
   local show_tanque_der = false
   
   for _, pipe in ipairs(self.level_grid) do
-    -- Check for pipe at x=0, y=2 (show tanque_izq)
-    if pipe.x == 0 and pipe.y == 2 then
-      show_tanque_izq = true
-    end
     -- Check for pipe at x=2, y=0 (show tanque_der)
     if pipe.x == 2 and pipe.y == 0 then
-      show_tanque_der = true
+      -- Also check if pipe.t is one of the valid types
+      for _, valid_type in ipairs(C.STARTING_PIPES_RIGHT_SIDE) do
+        if pipe.t == valid_type then
+            show_tanque_izq = false
+            show_tanque_der = true
+          break
+        end
+      end
     end
   end
   
