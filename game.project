@@ -14,6 +14,7 @@ stretch = fit
 
 [android]
 input_method = HiddenInputField
+permissions = WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
 
 [html5]
 scale_mode = fit

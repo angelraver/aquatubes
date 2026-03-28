@@ -1,28 +1,47 @@
 local C = require("scripts.config")
 local M = require("scripts.manager")
-local SAVE_FILE = "aquatubes.dat"
+
+-- Use sys.get_save_file() to get the proper writable path for the platform
+-- On Android: /data/data/com.example.aquatubes/
+-- On desktop: ./build/default/
+-- This ensures the save file persists on all platforms, including Android/BlueStacks
+local SAVE_FILE = sys.get_save_file("aquatubes", "progress")
 
 local function save_progress()
-    --print("Saving progress...")
-    --pprint(M.progress)
-    sys.save(SAVE_FILE, M.progress)
+    local success, err = pcall(function()
+        sys.save(SAVE_FILE, M.progress)
+    end)
+    
+    if not success then
+        print("[ERROR] Failed to save progress to " .. SAVE_FILE .. ": " .. tostring(err))
+    else
+        -- Uncomment for debugging: print("[SUCCESS] Progress saved to " .. SAVE_FILE)
+    end
 end
 
 local function load_progress()
-    --print("Loading progress...")
-    local data = sys.load(SAVE_FILE)
+    local data = nil
+    local success, err = pcall(function()
+        data = sys.load(SAVE_FILE)
+    end)
+    
+    if not success then
+        print("[WARNING] Could not load save file from " .. SAVE_FILE .. ": " .. tostring(err))
+        print("[INFO] Starting with fresh progress (World 1 unlocked)")
+    end
 
     -- Si no hay datos guardados o la estructura es antigua, creamos un progreso inicial.
     if data and data.worlds then
         M.progress = data
+        -- Uncomment for debugging: print("[SUCCESS] Progress loaded from " .. SAVE_FILE); pprint(M.progress)
     else
         -- Estado inicial del juego: Mundo 1 desbloqueado con 0 niveles completados.
         -- El nivel 1 del mundo 1 estará disponible por defecto.
         M.progress = {
             worlds = { [1] = 0 }
         }
+        -- Uncomment for debugging: print("[INFO] Fresh progress initialized"); pprint(M.progress)
     end
-    --pprint(M.progress)
 end
 
 -- Lógica mejorada para completar un nivel
