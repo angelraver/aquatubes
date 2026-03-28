@@ -7,6 +7,9 @@ local M = require("scripts.manager")
 -- This ensures the save file persists on all platforms, including Android/BlueStacks
 local SAVE_FILE = sys.get_save_file("aquatubes", "progress")
 
+-- NOTE: DEBUG_MODE, DEBUG_WORLD, and DEBUG_LEVEL are now defined in main/main.script
+-- and passed to the manager (M) during initialization
+
 local function save_progress()
     local success, err = pcall(function()
         sys.save(SAVE_FILE, M.progress)
@@ -41,6 +44,28 @@ local function load_progress()
             worlds = { [1] = 0 }
         }
         -- Uncomment for debugging: print("[INFO] Fresh progress initialized"); pprint(M.progress)
+    end
+
+    -- DEBUG MODE: Override progress if enabled (read from manager which was set in main/main.script)
+    if M.DEBUG_MODE then
+        print("[DEBUG] DEBUG_MODE enabled! Unlocking World " .. M.DEBUG_WORLD .. ", Level " .. M.DEBUG_LEVEL)
+        
+        -- Create progress table with all worlds from 1 to DEBUG_WORLD
+        M.progress.worlds = {}
+        
+        -- Unlock all worlds up to DEBUG_WORLD-1 completely (all 20 levels)
+        for world = 1, M.DEBUG_WORLD - 1 do
+            M.progress.worlds[world] = C.LEVEL_COUNT
+        end
+        
+        -- Set current world to have completed levels up to DEBUG_LEVEL-1
+        M.progress.worlds[M.DEBUG_WORLD] = M.DEBUG_LEVEL - 1
+        
+        print("[DEBUG] Progress unlocked:")
+        print("  - Worlds 1 to " .. (M.DEBUG_WORLD - 1) .. ": COMPLETED (all levels)")
+        print("  - World " .. M.DEBUG_WORLD .. ": Levels 1-" .. (M.DEBUG_LEVEL - 1) .. " completed, Level " .. M.DEBUG_LEVEL .. " available")
+        print("[DEBUG] Ready to test World " .. M.DEBUG_WORLD .. ", Level " .. M.DEBUG_LEVEL)
+        pprint(M.progress)
     end
 end
 

@@ -1,5 +1,12 @@
 local M = require "scripts.manager"
-local EDIT_MODE = false
+local EDIT_MODE = true
+
+-- DEBUG MODE: Set to true to unlock any level for testing and development
+-- Adjust DEBUG_WORLD and DEBUG_LEVEL to test specific levels
+-- Example: DEBUG_MODE = true, DEBUG_WORLD = 4, DEBUG_LEVEL = 9
+local DEBUG_MODE = false
+local DEBUG_WORLD = 6
+local DEBUG_LEVEL = 20
 
 local function switch_to_scene(new_scene)
 	msg.post("#" .. M.current_scene, "unload")
@@ -26,6 +33,12 @@ end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	
+	-- Pass debug flags to manager so other modules can access them
+	M.DEBUG_MODE = DEBUG_MODE
+	M.DEBUG_WORLD = DEBUG_WORLD
+	M.DEBUG_LEVEL = DEBUG_LEVEL
+	
 	theme_play()
 
 	if EDIT_MODE then
