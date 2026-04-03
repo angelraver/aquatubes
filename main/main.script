@@ -1,5 +1,5 @@
 local M = require "scripts.manager"
-local EDIT_MODE = true
+local EDIT_MODE = false
 
 -- DEBUG MODE: Set to true to unlock any level for testing and development
 -- Adjust DEBUG_WORLD and DEBUG_LEVEL to test specific levels
@@ -19,7 +19,7 @@ local function theme_stop()
 end
 
 local function theme_play()
-	sound.play("#theme", nil, function() end)-- El "nil, function()" es para que no nos devuelva un mensaje cuando termine, ya que está en bucle y nunca terminará.
+	--sound.play("#theme", nil, function() end)-- El "nil, function()" es para que no nos devuelva un mensaje cuando termine, ya que está en bucle y nunca terminará.
 end
 
 local function sound_toggle()
